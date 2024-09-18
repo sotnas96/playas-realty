@@ -1,0 +1,86 @@
+.cardContainer {
+    /* border: 1px solid red; */
+    gap: 30px;
+    justify-content: space-between;
+}
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 250px;
+    height: 300px;
+    border-radius: 20px;
+    border: none;
+    flex: 0 0 auto;
+    margin-right: 6vh;
+    transition: box-shadow 0.5s;
+    position: relative;
+    cursor: pointer;
+
+
+}
+.card:hover {
+    box-shadow: 
+    15px 0 20px rgba(0, 0, 0, 0.2),  /* Lighter shadow on the right */
+    0 15px 20px rgba(0, 0, 0, 0.2);
+}
+.icon-div{
+    width: 33.33%;
+    padding: 2%;
+    border-radius: 5px;
+    font-size: 14px;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    min-height: 50px;
+}
+.icon-div-child {
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+    margin: auto;
+    align-items: start;
+}
+.img-container{
+    height: 180px;
+}
+.card-img{
+    /* height: 180px; */
+    height: 100%;
+    border: none;
+    border-radius:20px 20px 0px 0px;
+}
+.admin-crud-buttons{
+    background-color: transparent;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    align-content: center;
+    transition: background-color 1s;
+    border-radius: 20px;
+    /* z-index: 100; */
+}
+.show-crud-buttons{
+    display: none;
+}
+.admin-crud-buttons:hover .show-crud-buttons{
+    display: block;
+}
+.admin-crud-buttons:hover{
+    background-color: rgba(0, 0, 0, 0.6);
+}
+.crud-button{
+    border: none;
+    background-color: transparent;
+    color: white;
+    margin: 3px;
+    font-size: 30px;
+}
+
+@media (max-width: 767px) {
+    .cardContainer{
+        /* gap: 10px; */
+        justify-content: space-around;
+        
+    }
+}

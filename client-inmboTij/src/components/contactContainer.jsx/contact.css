@@ -1,0 +1,30 @@
+.contact-img-container {
+    width: 100%;
+    max-width: 400px;
+    aspect-ratio: 1;
+  }
+  
+  .contact-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  .contact-card{
+    display: flex;
+    flex-direction: row;
+  }
+  .info-contact {
+    width: 75%;
+  }
+  @media (max-width: 767px) {
+    .info-contact{
+        width: 100%;
+    }
+    .contact-card{
+        flex-direction: column;
+    }
+    .contact-img-container {
+        max-width: 200px;
+      }
+  }

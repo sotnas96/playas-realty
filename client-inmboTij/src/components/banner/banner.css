@@ -1,0 +1,45 @@
+.banner {
+    background-color: white;
+    position: relative;
+    z-index: 2;
+    color: white;
+}
+.banner-img {
+    filter: brightness(0.6);
+    height: 100vh;
+}
+.banner-tittle {
+    position: absolute;
+    z-index: 4;
+    top: 6rem;
+    text-align: start;
+}
+.contact-button {
+    background-color: #ffac12;
+    border: none;
+    padding: 5px;
+    width: 150px;
+    height: 40px;
+    border-top-right-radius: 20px;
+    font-size: 12px;
+}
+.h1-tittle {
+    font-size: 45px;
+    width: 75%;
+}
+.p-tittle {
+    width: 50%;
+}
+@media (max-width: 767px) {
+    .banner-tittle{
+        text-align: center;
+    }
+    .h1-tittle{
+        font-size: 30px;
+        width: 100%;
+    }
+    .p-tittle{
+        width: 100%;
+    }
+    
+}

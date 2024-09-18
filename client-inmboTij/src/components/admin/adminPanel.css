@@ -1,0 +1,29 @@
+.admin-panel-button {
+    background-color: rgb(95, 142, 169, 0.9);
+    color: black;
+    border: none;
+    width: 130px;
+    border-radius: 10px;
+    padding: 10px;
+    transition: font-size 0.5s ,background-color 0.5s ease;
+}
+.admin-panel-button:hover {
+    /* background-color: rgba(0, 0, 0, 0.3); */
+    /* filter: contrast(0.8) */
+    background-color: #0e1b40;
+    color: white;
+}
+
+.selected {
+    font-size: 17px;
+    background-color: #0e1b40;
+    color: white;
+    filter: contrast(0.8)
+    }
+.small-img-form {
+    width: 70px;
+    height: 70px;
+}
+.loading-box {
+    min-height: 40vh;
+}

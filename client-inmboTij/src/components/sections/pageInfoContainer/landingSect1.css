@@ -1,0 +1,47 @@
+.land-sect1{
+    background-color:  #f5f5f5 ; 
+    /*  */
+    /* margin-top: 10px; */
+    /* padding: 30px 0; */
+    margin: 50px 0;
+}
+.section-button {
+    background-color: black;
+    color: white;
+    font-size: 12px;
+}
+.arrow-button{
+    color: #ffac12;
+}
+.img-landing{
+    height: 40vh;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: -15px;
+    border-top-right-radius: 30px;
+    box-shadow: 
+    15px 0 20px rgba(0, 0, 0, 0.2),  /* Lighter shadow on the right */
+    0 15px 20px rgba(0, 0, 0, 0.5);
+}
+.img-landing2{
+    right: 0;
+    left: 50%;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 0px;
+
+}
+.no-show {
+    display: flex;
+}
+@media (max-width: 767px) {
+    .no-show{
+        display: none;
+    }
+    .land-sect1{
+        background-color:  #fffaf6 ; 
+    }
+    .img-landing2{
+        display: none;
+    }
+}

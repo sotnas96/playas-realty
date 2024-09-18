@@ -1,0 +1,37 @@
+.sidebar-panel{
+    width: 140px;
+    background-color: #5f8ea9;
+    align-self: stretch;
+    min-height: 60vh;
+}
+.panel-button {
+    align-content: center;
+    cursor: pointer;
+    /* color: white; */
+}
+.panel-button:hover{
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.nlb {
+    text-decoration: none;
+    color: black;
+    
+}
+.active .active2{
+    color:black;
+    background-color:white;
+    border-radius: 5px;
+}
+@media (max-width: 767px) {
+    .admin-container {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .sidebar-panel{
+        width: 100%;
+        min-height: 140px;
+        flex-direction: row;
+    }
+
+}

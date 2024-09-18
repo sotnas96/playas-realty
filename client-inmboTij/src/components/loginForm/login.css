@@ -1,0 +1,14 @@
+.login-form-box{
+    border-radius: 20px;
+    width: 400px;
+    
+}
+.sign-in-button {
+    background-color: #ffd814;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+}
+.sign-in-button:hover{
+    filter: brightness(0.9);
+}

@@ -1,0 +1,33 @@
+.contact-info{
+    width: 45%;
+    background-color: black;
+    color: white;
+}
+.formFields{
+    width: 55%;
+}
+.textField {
+    width: 87.5%;
+}
+@media (max-width: 767px) {
+    .formFields{
+        width: 100%;
+        text-align: center;
+    }
+    .contact-info {
+        width: 100%;
+        text-align: start;
+        padding: 20px;
+        background-color:#ffac12 ;
+        color: black;
+    }
+    .mobile-form{
+        text-align: start;
+        padding: 10px;
+    }
+    .mobile-formlabel{
+        text-align: center;
+        margin: auto;
+        width: 85.7% ;
+    }
+}
