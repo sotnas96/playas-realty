@@ -2,13 +2,14 @@ const express = require("express");
 const dotenv = require("dotenv");
 const app = express()
 const cors = require('cors');
-
+dotenv.config();
+const port = process.env.PORT || 8081;
 const mainRoute = require("./api/routes/main");
 const { connectionToDB } = require("./api/dbconfig")
 
 app.use(cors());
 
-dotenv.config();
+
 
 app.use(express.json());
 app.use("/api", mainRoute)
@@ -17,8 +18,8 @@ app.use("*", (req, res) => {
 })
 try {
     connectionToDB();
-    app.listen(4000, () => {
-        console.log("puerto funcionando")
+    app.listen(port, () => {
+        console.log("puerto funcionando: "+ port)
     });
 } catch(error) {
     console.error(error);
