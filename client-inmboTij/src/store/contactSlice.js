@@ -3,7 +3,7 @@ import axios from "axios";
 
 export const getInqueriesAsync = createAsyncThunk('inqueries', async(token) => {
     try {
-        const { data } = await axios.get("http://back-playa-realty.us-east-1.elasticbeanstalk.com/api/inqueries", {
+        const { data } = await axios.get("https://back-playa-realty.us-east-1.elasticbeanstalk.com/api/inqueries", {
             headers: {
                 Authorization: token
             }
@@ -15,7 +15,7 @@ export const getInqueriesAsync = createAsyncThunk('inqueries', async(token) => {
 })
 export const createInquerieAsync = createAsyncThunk("create/inquerie", async(info) => {
     try {
-        const { data } = await axios.post("http://back-playa-realty.us-east-1.elasticbeanstalk.com/api/contact", info);
+        const { data } = await axios.post("https://back-playa-realty.us-east-1.elasticbeanstalk.com/api/contact", info);
         return data
     }catch (error) {
         error.response.data
