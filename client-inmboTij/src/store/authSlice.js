@@ -7,7 +7,7 @@ const initialState = {
 }
 export const signInAsync = createAsyncThunk("admin/login", async (credentials) => {
     try {
-        const { data } = await axios.post('http://localhost:4000/api/login', credentials)
+        const { data } = await axios.post('http://back-playa-realty.us-east-1.elasticbeanstalk.com/api/login', credentials)
         return data
     }catch(error) {
         return error.response.data
@@ -15,7 +15,7 @@ export const signInAsync = createAsyncThunk("admin/login", async (credentials) =
 })
 export const checkTokenAsync = createAsyncThunk("admin/checkToken", async (token) => {
     try {
-        const { data } = await axios.get('http://localhost:4000/api/checkToken',{
+        const { data } = await axios.get('http://back-playa-realty.us-east-1.elasticbeanstalk.com/api/checkToken',{
             headers: {
                 Authorization:token
             }

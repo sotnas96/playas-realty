@@ -1,6 +1,9 @@
 .cardContainer {
     /* border: 1px solid red; */
-    gap: 30px;
+    /* margin: auto; */
+    display: flex;
+    flex-wrap: wrap;
+    /* width: 90%; */
     justify-content: space-between;
 }
 .card {
@@ -12,7 +15,8 @@
     border-radius: 20px;
     border: none;
     flex: 0 0 auto;
-    margin-right: 6vh;
+    /* margin-right: 15px; */
+    margin: 15px;
     transition: box-shadow 0.5s;
     position: relative;
     cursor: pointer;

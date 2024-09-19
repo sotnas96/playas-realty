@@ -8,7 +8,7 @@ const initialState = {
 export const createPropertyAsync = createAsyncThunk("admin/create", async ({property, token}) => {
     try {
 
-        const createProperty = await axios.post('http://localhost:4000/api/admin/create', property, {
+        const createProperty = await axios.post('http://back-playa-realty.us-east-1.elasticbeanstalk.com/api/admin/create', property, {
             headers: {
                 Authorization: token,
                 'Content-Type':'multipart/form-data'
@@ -21,7 +21,7 @@ export const createPropertyAsync = createAsyncThunk("admin/create", async ({prop
 })
 export const getPropertiesAsync = createAsyncThunk("all/properties", async () => {
     try {
-        const response = await axios.get('http://localhost:4000/api');
+        const response = await axios.get('http://back-playa-realty.us-east-1.elasticbeanstalk.com/api');
         return response.data
     } catch(error) {
         return error.response.data

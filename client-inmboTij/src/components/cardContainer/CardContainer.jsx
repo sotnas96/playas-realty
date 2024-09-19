@@ -13,7 +13,9 @@ const cardContainer = (props) => {
     }, [dispatch, properties]);
     
     return (
-        <div className="cardContainer d-flex w-100 my-5 py-2 flex-wrap">
+        <div className="w-100 my-5 py-2">
+            <div className="cardContainer">
+
             {
                 properties.length > 0 ?
             
@@ -24,6 +26,8 @@ const cardContainer = (props) => {
                  :
                  (<p>No properties yet</p>)
             }
+            </div>
+
         </div>
     )
 };

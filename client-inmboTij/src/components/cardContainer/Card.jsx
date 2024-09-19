@@ -10,7 +10,7 @@ const Card = ({ props }) => {
         <div className="card">
 
             <div className="img-container">
-                <NavLink to={`detail/${props._id}`}>
+                <NavLink to={`/properties/detail/${props._id}`}>
                     <img src={props.images[0]} alt="" className="card-img"/>
                 </NavLink>
             </div>

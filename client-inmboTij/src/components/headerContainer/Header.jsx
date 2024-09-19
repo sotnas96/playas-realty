@@ -43,7 +43,7 @@ const Header = () => {
                         </Link>
                     </div>
                     <div className="w-75 hide-menu">
-                        <ul className="list-group list-group-horizontal header-list justify-content-around p-2">
+                        <ul className="list-group list-group-horizontal header-list justify-content-around p-2 fs-5">
                             <li>
                                 <div className="">
                                     <NavLink to={"/"} className={({ isActive, isPending }) => isActive ? 'header-nav active' : `header-nav` }>
