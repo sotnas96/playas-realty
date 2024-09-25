@@ -40,7 +40,7 @@ function App() {
             <Route path='/admin/*' element={<AdminPanel/>}/>
           </Route>
 
-          <Route path='*' element={<div className='bg-white'>Not found</div>}/>
+          {/* <Route path='*' element={<div className='bg-white'>Not found</div>}/> */}
         </Routes>
       </HeaderContainer>
       <Footer/>
