@@ -1,9 +1,10 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-
+const url = import.meta.env.VITE_API_BACK_URL
+// const url = 'http://localhost:4000/api'
 export const getInqueriesAsync = createAsyncThunk('inqueries', async(token) => {
     try {
-        const { data } = await axios.get("https://back-playa-realty.us-east-1.elasticbeanstalk.com/api/inqueries", {
+        const { data } = await axios.get(`${url}/inqueries`, {
             headers: {
                 Authorization: token
             }
@@ -15,7 +16,7 @@ export const getInqueriesAsync = createAsyncThunk('inqueries', async(token) => {
 })
 export const createInquerieAsync = createAsyncThunk("create/inquerie", async(info) => {
     try {
-        const { data } = await axios.post("https://back-playa-realty.us-east-1.elasticbeanstalk.com/api/contact", info);
+        const { data } = await axios.post(`${url}/contact`, info);
         return data
     }catch (error) {
         error.response.data

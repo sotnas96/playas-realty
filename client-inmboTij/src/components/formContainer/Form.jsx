@@ -65,7 +65,7 @@ const Form = () => {
                     </div>
                     <div>
                         <button className="w-100 contact-button section-button" type="sumbit">
-                            <p className='d-inline p-2'> Contactanos </p>
+                            <p className='d-inline p-2 fs-6'> Contáctanos </p>
                             <span className="mx-2 arrow-button"> <FaArrowRightLong /> </span>
                         </button>
                     </div>

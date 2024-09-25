@@ -51,6 +51,17 @@
     height: auto;
     object-fit: cover;
   }
+  .crud-button{
+    width: 50%;
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+    height: 100%;
+    padding: 5px;
+}
+.crud-button:hover{
+    background-color: rgba(0,0,0,0.1);
+}
 @media (max-width: 767px) {
     .main-page{
         flex-direction: column;

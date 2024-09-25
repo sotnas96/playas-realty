@@ -1,5 +1,14 @@
 .footer {
-    min-height: 150px;
+    min-height: 80px;
     background-color: black;
     color: white;
+    width: 80%;
+    margin: auto;
+}
+.list-footer {
+    list-style: none;
+    justify-content: space-between;
+}
+.foot-color {
+    color: #ffac12 ;
 }

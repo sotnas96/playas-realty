@@ -1,6 +1,8 @@
 import { createAsyncThunk, createSelector, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
+const url = import.meta.env.VITE_API_BACK_URL;
+// const url = 'http://localhost:4000/api';
 const initialState = {
     properties: [],
     loading: false
@@ -8,7 +10,7 @@ const initialState = {
 export const createPropertyAsync = createAsyncThunk("admin/create", async ({property, token}) => {
     try {
 
-        const createProperty = await axios.post('https://back-playa-realty.us-east-1.elasticbeanstalk.com/api/admin/create', property, {
+        const createProperty = await axios.post(`${url}/admin/create`, property, {
             headers: {
                 Authorization: token,
                 'Content-Type':'multipart/form-data'
@@ -21,9 +23,36 @@ export const createPropertyAsync = createAsyncThunk("admin/create", async ({prop
 })
 export const getPropertiesAsync = createAsyncThunk("all/properties", async () => {
     try {
-        const response = await axios.get('https://back-playa-realty.us-east-1.elasticbeanstalk.com/api');
+        const response = await axios.get(`${url}`);
         return response.data
     } catch(error) {
+        return error.response.data
+    }
+})
+export const updatePropertyAsync = createAsyncThunk("admin/update", async ({property, token}) => {
+    try{
+        const response = await axios.patch(`${url}/admin/edit`, property, {
+            headers: {
+                Authorization: token,
+                'Content-Type':'multipart/form-data'
+            }
+        });
+        console.log(response);
+        return response.data
+    } catch(error) {
+        return error.response.data
+    }
+})
+export const deletePropertyAsync = createAsyncThunk ("admin/delete", async ({ propertyId, token}) => {
+    try {
+        const response = await axios.delete(`${url}/admin/delete`, {
+            data:{_id: propertyId},
+            headers: {
+                Authorization: token
+            }
+        });
+        return response.data
+    } catch (error) {
         return error.response.data
     }
 })
@@ -44,6 +73,14 @@ const propertiesSlice = createSlice({
             })
             .addCase(getPropertiesAsync.pending, (state) => {
                 state.loading = true
+            })
+            .addCase(updatePropertyAsync.fulfilled, (state, action) => {
+                console.log(action.payload)
+                state.properties = state.properties.filter(element => element._id != action.payload.data._id)           
+                state.properties.push(action.payload.data)
+            })
+            .addCase(deletePropertyAsync.fulfilled, (state, action) => {
+                state.properties = state.properties.filter(element => element._id != action.payload.data._id);
             })
     }
 }

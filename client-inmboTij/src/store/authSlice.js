@@ -1,5 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+const url = import.meta.env.VITE_API_BACK_URL
+// const url = 'http://localhost:4000/api'
 const initialState = {
     admin: null,
     isAuth: false,
@@ -7,7 +9,7 @@ const initialState = {
 }
 export const signInAsync = createAsyncThunk("admin/login", async (credentials) => {
     try {
-        const { data } = await axios.post('https://back-playa-realty.us-east-1.elasticbeanstalk.com/api/login', credentials)
+        const { data } = await axios.post(`${url}/login`, credentials)
         return data
     }catch(error) {
         return error.response.data
@@ -15,7 +17,7 @@ export const signInAsync = createAsyncThunk("admin/login", async (credentials) =
 })
 export const checkTokenAsync = createAsyncThunk("admin/checkToken", async (token) => {
     try {
-        const { data } = await axios.get('https://back-playa-realty.us-east-1.elasticbeanstalk.com/api/checkToken',{
+        const { data } = await axios.get(`${url}/checkToken`,{
             headers: {
                 Authorization:token
             }

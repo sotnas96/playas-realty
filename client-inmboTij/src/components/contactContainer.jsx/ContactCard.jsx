@@ -1,5 +1,6 @@
 import { FaArrowRightLong } from "react-icons/fa6";
 import "./contact.css"
+import ScrollInto from "react-scroll-into-view";
 const ContactCard = () => {
     return (
         <div className="contact-card p-4 my-4">
@@ -18,10 +19,12 @@ const ContactCard = () => {
                         <p className="fw-lighter">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusamus repudiandae quis dignissimos expedita magnam doloremque veritatis, mollitia officiis atque, temporibus accusantium, consectetur voluptate omnis dolorem culpa. Tempora quibusdam ipsam deleniti.</p>
                     </div>
                     <div>
-                        <button className="w-50 contact-button section-button">
-                            <p className='d-inline p-2'> Contactanos </p>
-                            <span className="mx-2 arrow-button"> <FaArrowRightLong /> </span>
-                        </button>
+                        <ScrollInto selector="#contactForm2">
+                            <button className="w-50 contact-button section-button">
+                                <p className='d-inline p-2'> Contactanos </p>
+                                <span className="mx-2 arrow-button"> <FaArrowRightLong /> </span>
+                            </button>
+                        </ScrollInto>
                     </div>
                 </div>
             </div>

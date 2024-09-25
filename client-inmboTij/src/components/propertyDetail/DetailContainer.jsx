@@ -1,17 +1,25 @@
 import "./detail.css"
 import Card from "../cardContainer/Card";
 import { FaCheckCircle } from "react-icons/fa";
-import { FaArrowRightLong } from "react-icons/fa6";
-import { useParams } from "react-router-dom";
+import { MdDelete } from "react-icons/md";
+import { FaRegEdit } from "react-icons/fa";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getPropertiesAsync, selectPropertyById } from "../../store/properties";
+import { deletePropertyAsync, getPropertiesAsync, selectPropertyById } from "../../store/properties";
 import ImageGallery from "react-image-gallery";
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import Form from "../formContainer/Form";
+import Loading from "../Loading/Loading";
 
 const DetailContainer = () => {
+    const navigate = useNavigate()
     const dispatch = useDispatch();
+    const token = localStorage.getItem('token');
+
     const { id } = useParams();
+    const { isAuth } = useSelector(state => state.auth)
+    const [authdelete, setauthDelete] = useState(false);
+    const [confirmDelete, setConfirmDelete] = useState(false)
     const property = useSelector(state => selectPropertyById(state, id));
     let utilities = property ? property.utilities[0].split(',') : [];
     const images = property? property.images.map(element => {
@@ -19,13 +27,28 @@ const DetailContainer = () => {
                 thumbnail: element
         }
     }) : [];
-    console.log(images)
-    
+    const deleteProperty = () => {
+        setauthDelete(true)
+    }
+    const confirmDeletion = () => {
+        dispatch(deletePropertyAsync({propertyId: property._id, token}));
+        setConfirmDelete(true)        
+        setTimeout(()=> {
+            setauthDelete(false);
+            setConfirmDelete(false)
+            navigate("/admin/properties")
+        }, 1000)
+    }
+    const cancelDeletion = () => {
+        setauthDelete(false)
+    }
     useEffect(()=> {
+
         if (!property) dispatch(getPropertiesAsync())
         
     }, [id, property])
-    if (!property) return <p className="bg-white">Loading</p>
+    
+    if (!property) return <Loading/>
     return (
 
                 <div className="detailContainer">
@@ -45,6 +68,27 @@ const DetailContainer = () => {
                     </div>
                     <div className="w-100">
                         {/* Main page */}
+                        {
+                            isAuth && 
+                            
+                            <div className="admin-crud-buttons">
+                                <div className="show-crud-buttons fs-5 p-2 bg-white">
+                                    <Link to={`/admin/properties/edit/${property._id}`}>
+                                        <button className="crud-button">Editar <FaRegEdit /></button>    
+                                    </Link>
+                                    <button className="crud-button" onClick={deleteProperty}>Eliminar <MdDelete /></button>
+                                    {authdelete && 
+                                    <div>
+                                        <p>Seguro desea eliminar?</p>
+                                        <button className="btn border-primary m-1" onClick={confirmDeletion}>yes</button>
+                                        <button className="btn border-danger m-1" onClick={cancelDeletion}>no</button>
+                                        {confirmDelete && <p className="text-success">Property deleted!</p>}
+                                    </div>
+                                    }
+
+                                </div>
+                            </div>       
+                        }
                         <div className="p-4 main-page">
                             {/* Main descriptions */}
                             <div className="detail-main">
@@ -57,7 +101,7 @@ const DetailContainer = () => {
                                     </div>
                                     <div className="d-flex justify-content-between border-top">
                                         <div className=" border-end detail-box">
-                                            <p className="m-0">bed{property.beds}</p>
+                                            <p className="m-0">bed {property.beds}</p>
                                         </div>
                                         <div  className="border-end detail-box">
                                             <p className="m-0">bath#{property.baths}</p>

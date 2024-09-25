@@ -34,6 +34,7 @@ const LoginForm = () => {
         // console.log(adminAuth);
         // console.log('desde componente')
     }
+    
     return (
                 <div className="p-2 m-auto login-form-box border">
                     <div className="text-start p-2">
