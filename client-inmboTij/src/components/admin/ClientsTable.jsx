@@ -6,7 +6,6 @@ const ClientsTable = () => {
     const dispatch = useDispatch();
     const { loading, inqueries }= useSelector(state => state.contacts);
     const sorted =[...inqueries].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
-    console.log(sorted)
     useEffect(()=> {
         const token = localStorage.getItem('token')
         if (inqueries.length == 0) dispatch(getInqueriesAsync(token))

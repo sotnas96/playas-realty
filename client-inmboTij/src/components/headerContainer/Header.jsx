@@ -20,7 +20,6 @@ const Header = () => {
     }
     useEffect (() => {
         if (location.pathname == '/'){
-
         window.onscroll = () => {
             const scrollTop = window.scrollY;
             const navBarHeight = 50;
@@ -46,28 +45,28 @@ const Header = () => {
                         <ul className="list-group list-group-horizontal header-list justify-content-around p-2 fs-5">
                             <li>
                                 <div className="">
-                                    <NavLink to={"/"} className={({ isActive, isPending }) => isActive ? 'header-nav active' : `header-nav` }>
+                                    <NavLink to={"/"} className={({ isActive, isPending }) => isActive ? 'header-nav active1' : `header-nav` }>
                                         Inicio
                                     </NavLink>
                                 </div>    
                             </li>
                             <li>
                                 <div className="">
-                                    <NavLink to={"/aboutUs"} className={({ isActive, isPending }) => isActive ? 'header-nav active' : `header-nav` }>
+                                    <NavLink to={"/aboutUs"} className={({ isActive, isPending }) => isActive ? 'header-nav active1' : `header-nav` }>
                                         Sobre Nosotros 
                                     </NavLink>
                                 </div> 
                             </li>
                             <li>
                                 <div className="">
-                                    <NavLink to={"/services"} className={({ isActive, isPending }) => isActive ? 'header-nav active' : `header-nav` }>
+                                    <NavLink to={"/services"} className={({ isActive, isPending }) => isActive ? 'header-nav active1' : `header-nav` }>
                                         Servicios
                                     </NavLink>
                                 </div> 
                             </li>
                             <li>
                                 <div className="">
-                                    <NavLink to={"/properties"} className={({ isActive, isPending }) => isActive ? 'header-nav active' : `header-nav` }>
+                                    <NavLink to={"/properties"} className={({ isActive, isPending }) => isActive ? 'header-nav active1' : `header-nav` }>
                                         Propiedades
                                     </NavLink>
                                 </div> 
@@ -76,7 +75,7 @@ const Header = () => {
                                 isAuth && 
                                                 <li>
                                                     <div className="">
-                                                        <NavLink to={"/admin"} className={({ isActive, isPending }) => isActive ? 'header-nav active' : `header-nav` }>
+                                                        <NavLink to={"/admin"} className={({ isActive, isPending }) => isActive ? 'header-nav active1' : `header-nav` }>
                                                             <p className="">Admin</p>    
                                                         </NavLink>
                                                     </div> 

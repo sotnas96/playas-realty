@@ -3,8 +3,9 @@
     /* margin: auto; */
     display: flex;
     flex-wrap: wrap;
-    /* width: 90%; */
-    justify-content: space-between;
+    width: 90%;
+    margin: auto;
+    /* justify-content: space-between; */
 }
 .card {
     display: flex;
@@ -16,7 +17,7 @@
     border: none;
     flex: 0 0 auto;
     /* margin-right: 15px; */
-    margin: 15px;
+    margin: 3vw;
     transition: box-shadow 0.5s;
     position: relative;
     cursor: pointer;
@@ -46,7 +47,7 @@
     align-items: start;
 }
 .img-container{
-    height: 180px;
+    min-height: 180px;
 }
 .card-img{
     /* height: 180px; */
@@ -54,7 +55,7 @@
     border: none;
     border-radius:20px 20px 0px 0px;
 }
-.admin-crud-buttons{
+/* .admin-crud-buttons{
     background-color: transparent;
     position: absolute;
     width: 100%;
@@ -62,7 +63,6 @@
     align-content: center;
     transition: background-color 1s;
     border-radius: 20px;
-    /* z-index: 100; */
 }
 .show-crud-buttons{
     display: none;
@@ -72,14 +72,8 @@
 }
 .admin-crud-buttons:hover{
     background-color: rgba(0, 0, 0, 0.6);
-}
-.crud-button{
-    border: none;
-    background-color: transparent;
-    color: white;
-    margin: 3px;
-    font-size: 30px;
-}
+} */
+
 
 @media (max-width: 767px) {
     .cardContainer{

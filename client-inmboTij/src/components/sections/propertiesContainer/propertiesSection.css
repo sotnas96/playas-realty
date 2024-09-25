@@ -31,6 +31,15 @@
 .center-div{
     margin: 0;
 }
+.filter-button {
+    border: none;
+    background-color: white;
+    border-radius: 10px;
+    padding: 8px;
+    width: 120px;
+    margin-right: 5px;
+
+}
 @media (max-width: 767px) {
     .style-div{
         /* gap: 10px; */

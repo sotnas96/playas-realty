@@ -13,22 +13,29 @@ import { Routes, Route } from 'react-router-dom'
 import { useEffect } from 'react'
 import { checkTokenAsync } from './store/authSlice'
 import Private from './components/ProtectedRoutes/Private'
+import ScrollToTop from './components/scrollTop/ScrollToTop'
+import Anonymous from './components/ProtectedRoutes/Anonymous'
+
 function App() {
   const dispatch = useDispatch();
   useEffect(()=> {
     const token = localStorage.getItem('token');
     if (token) dispatch(checkTokenAsync(token));
   }, [dispatch])
+
   return (
     <>  
       <HeaderContainer>
+        <ScrollToTop/>
         <Routes>
           <Route path='/' element={<Landing/>}/>
           <Route path='/properties' element={<Properties/>}/>
           <Route path='/properties/detail/:id' element={<PropertyDetail/>}/>
           <Route path='/aboutUs' element={<Contact/>}/>
           <Route path='/services' element={<ServicesContainer/>}/>
-          <Route path='/login' element={<Login/>}/>
+          <Route element={<Anonymous/>}>
+            <Route path='/login' element={<Login/>}/>
+          </Route>
           <Route element={<Private/>}>
             <Route path='/admin/*' element={<AdminPanel/>}/>
           </Route>

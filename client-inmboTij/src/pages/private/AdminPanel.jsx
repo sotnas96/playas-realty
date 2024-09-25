@@ -14,26 +14,29 @@ const AdminPanel = () => {
     }
     return (
         <div className="bg-white d-flex admin-container">
-            <div className=" sidebar-panel d-flex flex-column">
-                <div className="p-1">
+            <div className="sidebar-panel d-flex flex-column">
+                <div className="p-1 d-flex flex-column h-100">
+                    <div>
+                        <div className="panel-button mt-4">
+                            <NavLink to="/admin/properties" className={({ isActive, isPending }) => isActive ? "nlb active" : 'nlb' }>
+                                <div className="p-2 active2">
+                                    <p className="m-0"><IoIosHome /> Properties
+                                    </p>
+                                </div>
+                            </NavLink>
+                        </div>
+                        <div className="panel-button my-4">
+                            <NavLink to="/admin/inqueries" className={({ isActive, isPending }) => isActive ? "nlb active" : 'nlb' }>
+                                <div className="p-2 active2">
+                                    <p className="m-0">
+                                        <MdAddIcCall /> Inqueries
+                                    </p>
+                                </div>
+                            </NavLink>
+                        </div>
+                    </div>
+
                     <div className="panel-button mt-4">
-                        <NavLink to="/admin/properties" className={({ isActive, isPending }) => isActive ? "nlb active" : 'nlb' }>
-                            <div className="p-2 active2">
-                                <p className="m-0"><IoIosHome /> Properties
-                                </p>
-                            </div>
-                        </NavLink>
-                    </div>
-                    <div className="panel-button mt-2">
-                        <NavLink to="/admin/inqueries" className={({ isActive, isPending }) => isActive ? "nlb active" : 'nlb' }>
-                            <div className="p-2 active2">
-                                <p className="m-0">
-                                    <MdAddIcCall /> Inqueries
-                                </p>
-                            </div>
-                        </NavLink>
-                    </div>
-                    <div className="panel-button mt-2">
                         <NavLink to="" className='nlb'>
                             <div className="p-2">
                                 <p className="m-0" onClick={logoutFunction}>

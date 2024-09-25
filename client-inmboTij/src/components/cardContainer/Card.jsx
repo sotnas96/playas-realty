@@ -1,11 +1,8 @@
-import { MdDelete } from "react-icons/md";
-import { FaRegEdit } from "react-icons/fa";
+
 import { IoBed } from "react-icons/io5";
 import { FaBath } from "react-icons/fa";
-import { useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 const Card = ({ props }) => {
-    const { isAuth } = useSelector(state => state.auth)
     return (
         <div className="card">
 
@@ -40,16 +37,7 @@ const Card = ({ props }) => {
                     </div>
                 </div>
             </div>  
-             {
-                 isAuth && 
-                
-                <div className="admin-crud-buttons">
-                    <div className="show-crud-buttons">
-                        <button className="crud-button"><FaRegEdit /></button>    
-                        <button className="crud-button"><MdDelete /></button>
-                    </div>
-                </div>       
-            }
+
         </div>
     )
 };

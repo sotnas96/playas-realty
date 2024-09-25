@@ -27,8 +27,7 @@
     color: white;
     transition: color 1s, border 1s;
 }
-.active {
-    border-top: 2px solid #ffac12 ;
+.active1 {
     color:#ffac12 
 }
 .active-mobile {

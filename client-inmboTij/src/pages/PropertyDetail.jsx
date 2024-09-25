@@ -1,7 +1,5 @@
-import { useParams } from "react-router-dom";
 import DetailContainer from "../components/propertyDetail/DetailContainer";
-
-const PropertyDetail = ({props}) => {
+const PropertyDetail = () => {
     return (
         <DetailContainer />
     )

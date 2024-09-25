@@ -1,19 +1,48 @@
 import CardContainer from "../../../components/cardContainer/CardContainer";
-
+import { useState } from "react";
+const filterProps = {
+    category: '',
+    type: '',
+}
 const AdminProperties = () => {
-
-
-    
+    const [filter, setFilter] = useState(filterProps)
+    const handleFilterInput = event => {
+        setFilter({...filter, [event.target.name]: event.target.value});
+    }
+    const cleanFilters = () => {
+        setFilter(filterProps)
+    }
     return (
+        <>
+        <div className>
+            <form action="bg-white">
+                <div  className='d-flex rounded-4 bg-white'>
+                    <div className='div-form border-end'>
+                        <select name="category" id="" className='select-form' value={filter.category} onChange={handleFilterInput}>
+                            <option value=''selected disabled>Compra o venta</option>
+                            <option  value="sale" className=''>Compra</option>
+                            <option value="rent" className=''>Alquiler</option>
 
-        <div className="p-2 w-100 bg-white">
-            <div className="text-start mx-2">
-                <button className="admin-panel-button">
-                    <p className="m-0">Filter</p>
-                </button>
-            </div>
-            <CardContainer />
+                        </select>
+                    </div>
+                    <div className='div-form'>
+                        <select name="type" id="" className='select-form' value={filter.type} onChange={handleFilterInput}>
+                            <option value="" selected disabled>Tipo de propiedad</option>
+                            <option value="casa">Casa</option>
+                            <option value="apartamento">Apartamento</option>
+                            <option value="terreno">Terreno</option>
+                        </select>
+                    </div>
+                </div>
+                <div className='my-2 text-start'>
+                    {/* <button  className='filter-button'>Aplicar</button> */}
+                    <button type='button' className='filter-button' onClick={cleanFilters}>Limpiar filtros</button>
+                </div>
+                
+            </form>
         </div>
+        <CardContainer filter={filter}/>
+    </>
     )
 };
 export default AdminProperties;

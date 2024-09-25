@@ -19,13 +19,14 @@ const propertyData = {
     pets:'',
     category:'',
     type:'',
+    available:'',
     utilities:[],
     description:'',
     extras:[],
     houseImg:[]
 
 };
-const CreateProperty = () => {
+const CreateProperty = (props) => {
     const token = localStorage.getItem('token')
     const navigate = useNavigate();
     const extraInput = useRef()
@@ -104,7 +105,6 @@ const CreateProperty = () => {
                 setTimeout(()=> {
                     setLoadingProperty(false);
                     navigate("/admin/properties")
-
                 },1000)
             }
 
@@ -147,10 +147,10 @@ const CreateProperty = () => {
                     </div>
                     <div className='col-md-4'>
                         <label htmlFor="" className="form-label">Type</label>
-                        <select name="category" className="form-select" aria-label="Default select example" onChange={handleInput}>
+                        <select name="type" className="form-select" aria-label="Default select example" onChange={handleInput}>
                             <option value=""selected disable>Choose..</option>
-                            <option value="casa" selected>Casa</option>
-                            <option value="apartamento" selected>Apartamento</option>
+                            <option value="casa" >Casa</option>
+                            <option value="apartamento" >Apartamento</option>
                             <option value="terreno">terreno</option>
                         </select>
                     </div>
@@ -196,8 +196,7 @@ const CreateProperty = () => {
                     <div className='col-md-4'>
                         <label htmlFor="" className="form-label">Pets</label>
                         <select name="pets" className="form-select" aria-label="Default select example" onChange={handleInput}>
-                            <option value=""selected disable>Choose..</option>
-                            <option value="true">Yes</option>
+                            <option value="true" selected>Yes</option>
                             <option value="false">No</option>
                         </select>
                     </div>
@@ -205,11 +204,11 @@ const CreateProperty = () => {
                         <label htmlFor="" className="form-label">Category</label>
                         <select name="category" className="form-select" aria-label="Default select example" onChange={handleInput}>
                             <option value=""selected disable>Choose..</option>
-                            <option value="rent" selected>Rent</option>
+                            <option value="rent">Rent</option>
                             <option value="sale">Sale</option>
                         </select>
                     </div>
-                    <div className="mb-3">
+                    <div className="mb-3 col-md-6">
                         <div>
                             <label htmlFor="">Utilities</label> 
                         </div>
@@ -225,6 +224,14 @@ const CreateProperty = () => {
                             <input name="utilities" className="form-check-input" type="checkbox" id="inlineCheckbox3" value="gas" onChange={handleInputUtilities}/>
                             <label className="form-check-label" for="inlineCheckbox3">Gas</label>
                         </div>
+                    </div>
+                    <div className="mb-3 col-md-6">
+                        <label htmlFor="" className="form-label">Available now</label>
+                        <select name="available" className="form-select" aria-label="Default select example" onChange={handleInput}>
+                            <option value=""selected disable>Elegir..</option>
+                            <option value="true" >SI</option>
+                            <option value="false" >NO</option>
+                        </select>
                     </div>
                     <div className="mb-3">
                         <label for="exampleFormControlTextarea1" className="form-label">Description</label>

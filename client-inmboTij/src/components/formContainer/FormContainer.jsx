@@ -2,7 +2,7 @@ import Form from "./Form";
 import "./form.css"
 const FormContainer = () => {
     return (
-        <div className="border-top border-bottom d-md-flex flex-row text-start">
+        <div className="border-top border-bottom d-md-flex flex-row text-start" id="contactForm2">
             <div className=" contact-info">
                 <div className=" p-md-4 m-md-4" >
                     <div>
