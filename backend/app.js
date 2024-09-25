@@ -3,13 +3,17 @@ const dotenv = require("dotenv");
 const app = express()
 const cors = require('cors');
 const mainRoute = require("./api/routes/main");
-const { connectionToDB } = require("./api/dbconfig")
+const { connectionToDB } = require("./api/dbconfig");
 dotenv.config();
 
+// const corsOption = {
+//     origin: 'https://master.d3vk7qx1bxdj12.amplifyapp.com',
+//     methods:'GET, HEAD, PUT, PATCH, POST, DELETE'
+// }
 app.use(cors());
 
 app.use(express.json());
-app.use("/", (req, res) => {
+app.get("/", (req, res) => {
     res.status(200).send("Welcome to playas realty real state, powered by CACAO")
 })
 app.use("/api", mainRoute)
