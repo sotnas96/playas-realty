@@ -9,6 +9,10 @@
     list-style: none;
     justify-content: space-between;
 }
+.list-footer a {
+    text-decoration: none;
+    color: white;
+}
 .foot-color {
     color: #ffac12 ;
 }

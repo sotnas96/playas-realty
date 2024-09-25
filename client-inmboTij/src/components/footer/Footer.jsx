@@ -1,6 +1,7 @@
 import "./footer.css"
 import { FaFacebook } from "react-icons/fa";
 import { FaFacebookF } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 const Footer = () => {
     return (
         <div className="p-4">
@@ -14,11 +15,16 @@ const Footer = () => {
                         <FaFacebookF />
                     </div>
                     <div className="col-8">
-                        <ul className="d-flex list-footer">
-                            <li>Principal</li>
-                            <li>Servicios</li>
-                            <li>Propiedades</li>
-                            <li>Contactos</li>
+                        <ul className="d-flex list-footer ">
+                            <Link to={"/services"} >
+                                <li>Servicios</li>
+                            </Link>
+                            <Link to={"/properties"} >
+                                <li>Propiedades</li>
+                            </Link>
+                            <Link to={"/aboutUs"} >
+                                <li>Contactos</li>
+                            </Link>       
                         </ul>
                     </div>
                 </div>

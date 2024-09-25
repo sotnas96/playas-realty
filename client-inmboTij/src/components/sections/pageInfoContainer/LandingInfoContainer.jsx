@@ -40,7 +40,7 @@ const LandignInfoContainer = () => {
                                 <div className='text-landing'>
                                     <p className='fs-1 fw-semibold' style={{letterSpacing:'-0.05em'}}>20 años de experiencia</p>
                                 </div>
-                                <div className='w-50 mb-4 text-landing'>
+                                <div className='text-div mb-4 text-landing'>
                                     <p className='fw-lighter lh-sm m-0 fs-6' >Llevando de la mano a nuestros clientes en la compra-venta de propiedades, casas, terrenos y departamentos.</p>
                                 </div>
                                 <div className='my-4'>
