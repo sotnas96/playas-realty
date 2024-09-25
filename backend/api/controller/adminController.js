@@ -22,9 +22,14 @@ const adminController = {
         }
     },
     editProperty: async (req, res) => {
-        const properyId = req.body.prop_id;
+        let editedProperty = {...req.body}
+        if (req.files.length) {
+            console.log('existe files')
+            const imgsUrls = await uploadFileToFirebase(req.files);
+            editedProperty = {...editedProperty, images: imgsUrls}
+        }
         try {
-            const editProperty = await Property.findByIdAndUpdate({_id: properyId}, {...req.body}, {new: true})
+            const editProperty = await Property.findByIdAndUpdate({_id: req.body._id}, {...editedProperty}, {new: true})
             if (!editProperty) throw new Error("Edit failed")
             res.send({success: true, data: editProperty})
         } catch(error) {
@@ -33,7 +38,7 @@ const adminController = {
 
     },
     deleteProperty: async (req, res) => {
-        const propertyId = req.body.prop_id;
+        const propertyId = req.body._id;
         try{
             const deleteProperty = await Property.findByIdAndDelete(propertyId);
             if (! deleteProperty) throw new Error("deletion failed");

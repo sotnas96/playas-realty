@@ -4,6 +4,9 @@ const { Schema } = mongoose;
 
 const Property = new Schema({
     property: String,
+    city:String,
+    state:String,
+    zip:Number,
     category: String,
     address: String,
     sqrft: String,
@@ -13,10 +16,7 @@ const Property = new Schema({
     year: Number,
     description: String,
     pets: Boolean,
-    available: {
-        type: Boolean,
-        default: true
-    },
+    available: Boolean,
     parking: String, //outdoor, indoor
     utilities: [String],
     images: [String],
