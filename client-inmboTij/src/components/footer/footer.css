@@ -12,3 +12,8 @@
 .foot-color {
     color: #ffac12 ;
 }
+@media (max-width: 767px) {
+    .list-footer {
+        flex-direction: column;
+    }
+}

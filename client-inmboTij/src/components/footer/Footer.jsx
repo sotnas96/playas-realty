@@ -25,7 +25,7 @@ const Footer = () => {
 
             </div>
             <div className="p-2  footer text-start">
-                <p>Av ejercito argentino 7520</p>
+                <p>P.º Estrella del Mar 1075-3-b, Playas de Tijuana, Playas Coronado, 22504 Tijuana, B.C., México</p>
             </div>
         </div>
     )

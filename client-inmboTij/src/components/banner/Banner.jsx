@@ -11,7 +11,7 @@ const Banner = () => {
                     <p className="fw-light p-tittle">Encuentra la casa de tus sueños con Playas realty. Somos una agencia inmobiliaria en Tijuana con más de 20 años de experiencia. </p>
                 </div>
                 <div className="mx-4 px-4">
-                    <ScrollInto selector="#contactForm" smooth={true}>
+                    <ScrollInto selector="#contactForm" smooth={true} className="text-black">
                         <button className="contact-button fw-bolder "> Contáctanos <span style={{color:'white'}} className="mx-2"><FaArrowRightLong /></span></button>
                     </ScrollInto>
                 </div>
