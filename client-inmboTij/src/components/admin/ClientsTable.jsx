@@ -13,14 +13,14 @@ const ClientsTable = () => {
     if (inqueries.length == 0) {
         return <div className="p-4">
                     <div className="text-center">
-                        <p className="fs-3 fw-semibold">No inqueries for the moment</p>
+                        <p className="fs-3 fw-semibold">No inquiries for the moment</p>
                     </div>
                 </div>
     }
     return (
         <div className="p-4">
                     <div className="text-center">
-                        <p className="fs-3 fw-semibold">Inqueries</p>
+                        <p className="fs-3 fw-semibold">Inquiries</p>
                     </div>
                     <div>
                         {}

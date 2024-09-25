@@ -43,7 +43,6 @@ const contactSlice = createSlice({
             .addCase(createInquerieAsync.fulfilled, (state, action) => {
                 state.inqueries.push(action.payload.data);
                 state.loading = false;
-                console.log(action);
             })
             .addCase(createInquerieAsync.pending, state => {
                 state.loading = true;

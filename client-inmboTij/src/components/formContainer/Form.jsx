@@ -10,18 +10,23 @@ const inquerie = {
     number:''
 
 }
+const regEx = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 const Form = () => {
     const dispatch = useDispatch();
     const errorMsg = useRef();
     const [userInfo, setUserInfo] = useState(inquerie)
     const [successMsg, setSuccessMsg] = useState(false)
+    const [badEmail, setBadEmail] = useState(false)
     const handleInput = (e) => {
         const {name , value} = e.target;
+        
+        if (name == 'email') setBadEmail(!regEx.test(value));
         setUserInfo({...userInfo, [name]: value});
     } 
     const handleForm = async (e) => {
         errorMsg.current.innerHTML = ``
-        let errorExist = false
+        let errorExist = false;
         e.preventDefault();
         Object.entries(userInfo).forEach(([key, value]) => {
             if (!value){
@@ -29,10 +34,11 @@ const Form = () => {
                errorExist = true;     
             }
         })
-        if (errorExist ) return 
+        if (errorExist || badEmail) return 
         try {
             setUserInfo(inquerie);
             setSuccessMsg(true)
+
             const response = await dispatch(createInquerieAsync(userInfo))
             if (! response.payload?.error){
                 setTimeout(()=> {
@@ -56,6 +62,7 @@ const Form = () => {
                     </div>
                     <div>
                         <input value={userInfo.email} type="text" placeholder="Email" className="border w-100 p-2 rounded-4" onChange={handleInput} name="email"/>
+                        {badEmail && <p className="p-2 text-danger">Please enter a valid email</p>}
                     </div>
                     <div>
                         <input  value={userInfo.number} type="text" placeholder="Number" className="border w-100 p-2 rounded-4" onChange={handleInput} name="number"/>
