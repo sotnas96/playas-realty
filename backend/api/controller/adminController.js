@@ -14,9 +14,8 @@ const adminController = {
             return res.status(400).json(errors.array());
         }
         try {    
-            const newProperty = {...req.body, images: imgsUrls}
-            await Property.create(newProperty)
-            return res.json({success:true, data:newProperty})
+            const data = await Property.create({...req.body, images: imgsUrls})
+            return res.json({success:true, data:data})
         } catch(error) {
             res.status(400).json({success: false, error: error.message})
         }
