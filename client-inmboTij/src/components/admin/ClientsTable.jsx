@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getInqueries, getInqueriesAsync } from "../../store/contactSlice";
+import { RingLoader } from "react-spinners";
 
 const ClientsTable = () => {
     const dispatch = useDispatch();
@@ -10,20 +11,27 @@ const ClientsTable = () => {
         const token = localStorage.getItem('token')
         if (inqueries.length == 0) dispatch(getInqueriesAsync(token))
     }, [inqueries, dispatch])
-    if (inqueries.length == 0) {
+    if (loading) {
         return <div className="p-4">
-                    <div className="text-center">
-                        <p className="fs-3 fw-semibold">No inquiries for the moment</p>
+                    <div className="w-50 m-auto">
+                        <div className="d-flex justify-content-center">
+                            <RingLoader/>
+                        </div>
+                        <p className="fs-3">Cargando consultas...</p>
                     </div>
                 </div>
     }
     return (
         <div className="p-4">
+            {inqueries.length > 0 ? 
+            (
+                <div>
+
                     <div className="text-center">
-                        <p className="fs-3 fw-semibold">Inquiries</p>
+                        <p className="fs-3 fw-semibold">Consultas</p>
                     </div>
-                    <div>
-                        {}
+                    <div className="contain-table">
+                        
                         <table class="table table-striped">
                             <thead>
                                 <tr>
@@ -49,6 +57,18 @@ const ClientsTable = () => {
                             </tbody>
                         </table>
                     </div>
+                </div>
+                
+            ) 
+                : 
+            (
+                <div className="text-start">
+                    <p>No hay consultas por el momento</p>
+                </div>
+            )
+            
+            }
+                    
         </div>
     )
 };

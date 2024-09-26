@@ -1,11 +1,11 @@
 .service-card{
     width: 30%;
     min-height: 300px;
-    min-width: 200px;
+    min-width: 350px;
     border-radius: 20px;
     border: none;
-    transition: box-shadow 0.5s;
     background-color: white;
+    margin: 10px;
 }
 @media (max-width: 767px){
     .logo-service-md {

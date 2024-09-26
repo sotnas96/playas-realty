@@ -1,6 +1,7 @@
 import './landingSect1.css'
 import { FaArrowRightLong } from "react-icons/fa6";
 import PropertiesContainer from '../propertiesContainer/PropertiesContainer';
+import scrollIntoForm from '../../scrollIntoForm/scrollIntoForm';
 
 const LandignInfoContainer = () => {
     return (
@@ -44,7 +45,7 @@ const LandignInfoContainer = () => {
                                     <p className='fw-lighter lh-sm m-0 fs-6' >Llevando de la mano a nuestros clientes en la compra-venta de propiedades, casas, terrenos y departamentos.</p>
                                 </div>
                                 <div className='my-4'>
-                                    <button className="contact-button fw-semihold section-button ">
+                                    <button className="contact-button fw-semihold section-button " onClick={scrollIntoForm}>
                                         <p className='d-inline p-2 fs-6'> Contáctanos </p>
                                         <span className="mx-2 arrow-button"> <FaArrowRightLong /> </span>
                                     </button>

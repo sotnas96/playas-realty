@@ -4,8 +4,7 @@ const Contact = () =>{
     return (
         <>
             <ContactContainer/>
-            <div className="bg-white">
-
+            <div className="bg-white" id="contactPageForm">
                 <FormContainer/>
             </div>
         </>

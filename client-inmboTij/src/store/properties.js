@@ -75,7 +75,6 @@ const propertiesSlice = createSlice({
                 state.loading = true
             })
             .addCase(updatePropertyAsync.fulfilled, (state, action) => {
-                console.log(action.payload)
                 state.properties = state.properties.filter(element => element._id != action.payload.data._id)           
                 state.properties.push(action.payload.data)
             })

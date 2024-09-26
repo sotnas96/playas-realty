@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { GiHamburgerMenu } from "react-icons/gi";
 import { Link, useLocation , NavLink} from 'react-router-dom';
 import { IoMdClose } from "react-icons/io";
-import { ScrollInto } from 'react-scroll-into-view';
 import { useSelector } from 'react-redux';
 import { isPending } from '@reduxjs/toolkit';
 

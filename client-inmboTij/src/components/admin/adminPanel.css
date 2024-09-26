@@ -27,3 +27,11 @@
 .loading-box {
     min-height: 40vh;
 }
+.table {
+    width: 90%;
+    margin: auto;
+}
+.contain-table {
+    max-height: 60vh;
+    overflow-y: scroll;
+}
