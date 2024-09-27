@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            background-color: #f5f5f5;
+        }
+        body{
+            padding: 0px;
+            margin: 0px;
+        }
+        .body-container {
+            margin: auto;
+            padding: 5px;
+            width: 50%;
+            text-align: start;
+
+        }
+        .body-tittle {
+            color: Black;
+            padding: 15px;
+        }
+        .info-container {
+            border: none;
+        }
+        .info-tittle {
+            padding: 15px;
+            background-color:#ffac12 ;
+        }
+        .yc {
+            background-color: #ffac12;
+        }
+        .yw{
+            background-color: white;
+        }
+        .contact-info {
+            padding:15px;
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="body-container">
+        <div class="body-tittle">
+            <h1>Playas Realty</h1>
+        </div>
+        <div class="info-container">
+            <div class="info-tittle">
+                <h2 class="yc">Tienes una nueva consulta!</h2>
+            </div>
+            <div class="contact-info">
+                <p class="yw">Nombre: {{name}} {{surname}}</p>
+                <p class="yw">Numero: {{number}}</p>
+                <p class="yw">Email: {{email}} </p>
+                <p class="yw">Mensaje: {{message}} </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

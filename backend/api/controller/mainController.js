@@ -22,7 +22,7 @@ const mainController = {
         try {
             const newInquerie = await Contact.create(userContact);
             if (! newInquerie) throw new Error("An error occur, please try again later")
-            sendEmail({ userContact })
+            sendEmail(userContact)
             res.status(200).json({ success:true, data: newInquerie });
         } catch(error) {
             res.status(400).json({success:false, error: error.message});

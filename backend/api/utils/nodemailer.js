@@ -1,5 +1,6 @@
 const nodemailer = require("nodemailer");
-
+const path = require("path");
+const fs = require("fs")
 
 const transporter = nodemailer.createTransport({
     host: process.env.MAIL_HOST,
@@ -10,13 +11,18 @@ const transporter = nodemailer.createTransport({
         pass: process.env.MAIL_PASS
     }
 });
-const sendEmail = async ({ userInfo }) => {
+const templatePath = path.join(__dirname, 'mailTemplates', 'emailTemplate.html');
+let readHTML = fs.readFileSync(templatePath, 'utf-8')
+const sendEmail = async (userInfo) => {
+    for (const key in userInfo) {
+        readHTML = readHTML.replace(`{{${key}}}`, userInfo[key])
+    } 
     return await transporter.sendMail({
         from: 'noreply@example.com',
         to: process.env.MAIL_RECIPIENT,
-        subject: 'New client inquerie',
+        subject: 'Nueva consulta de cliente',
         text: '',
-        html: '<h1>Hola probando</h1>',
+        html: readHTML,
     })
 };
 module.exports = { sendEmail }
