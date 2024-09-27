@@ -12,4 +12,9 @@
         width: 100%;
         font-size: 10px;
     }
+    .service-card{
+        min-height: 200px;
+        min-width: 250px;
+        width: 80%;
+    }
 }

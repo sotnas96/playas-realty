@@ -62,13 +62,13 @@ const Form = () => {
                     </div>
                     <div>
                         <input value={userInfo.email} type="text" placeholder="Email" className="border w-100 p-2 rounded-4" onChange={handleInput} name="email"/>
-                        {badEmail && <p className="p-2 text-danger">Please enter a valid email</p>}
+                        {badEmail && <p className="p-2 text-danger">Ingrese un mail válido</p>}
                     </div>
                     <div>
-                        <input  value={userInfo.number} type="text" placeholder="Number" className="border w-100 p-2 rounded-4" onChange={handleInput} name="number"/>
+                        <input  value={userInfo.number} type="text" placeholder="Numero" className="border w-100 p-2 rounded-4" onChange={handleInput} name="number"/>
                     </div>
                     <div>
-                        <textarea value={userInfo.message} name="message" id="" placeholder="Leave us a comment" className="border w-100 p-2 rounded-4" onChange={handleInput}></textarea>
+                        <textarea value={userInfo.message} name="message" id="" placeholder="Deje un comentario" className="border w-100 p-2 rounded-4" onChange={handleInput}></textarea>
                     </div>
                     <div>
                         <button className="w-100 contact-button section-button" type="sumbit">
@@ -81,7 +81,7 @@ const Form = () => {
                     {
                         successMsg && 
                         <div className="text-success">
-                            <p>Contact info send! We will be in contact as soon as possible</p>
+                            <p>Informacion enviada! Estaremos en contacto con usted a la brevedad</p>
                         </div>
                     }
                 </div>

@@ -147,11 +147,11 @@ const CreateProperty = (props) => {
                     </div>
                     <div className="col-md-4">
                         <label for="inputCity" className="form-label">Beds</label>
-                        <input name="beds" type="number" className="form-control" id="inputCity" onChange={handleInput}/>
+                        <input name="beds" min='1' type="number" className="form-control" id="inputCity" onChange={handleInput}/>
                     </div>
                     <div className="col-md-4">
                         <label for="inputState" className="form-label">Bath</label>
-                        <input name="baths" type="number" className="form-control" id="inputState" onChange={handleInput}/>
+                        <input name="baths" min='1' type="number" className="form-control" id="inputState" onChange={handleInput}/>
                         
                     </div>
                     <div className='col-md-4'>
