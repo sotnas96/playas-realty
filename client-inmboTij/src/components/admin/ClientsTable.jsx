@@ -5,12 +5,12 @@ import { RingLoader } from "react-spinners";
 
 const ClientsTable = () => {
     const dispatch = useDispatch();
-    const { loading, inqueries }= useSelector(state => state.contacts);
+    const { isFetched, inqueries, loading }= useSelector(state => state.contacts);
     const sorted =[...inqueries].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+    const token = localStorage.getItem('token')
     useEffect(()=> {
-        const token = localStorage.getItem('token')
-        if (inqueries.length == 0) dispatch(getInqueriesAsync(token))
-    }, [inqueries, dispatch])
+        if (!isFetched) dispatch(getInqueriesAsync(token))
+    }, [dispatch, isFetched])
     if (loading) {
         return <div className="p-4">
                     <div className="w-50 m-auto">

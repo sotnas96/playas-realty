@@ -26,7 +26,8 @@ const contactSlice = createSlice({
     name:'contacts',
     initialState: {
         inqueries:[],
-        loading: false
+        loading: false,
+        isFetched: false
     },
     reducers: {
 
@@ -38,6 +39,7 @@ const contactSlice = createSlice({
             })
             .addCase(getInqueriesAsync.fulfilled, (state, action) => {
                 state.loading = false,
+                state.isFetched = true,
                 state.inqueries = action.payload.data;
             })
             .addCase(createInquerieAsync.fulfilled, (state, action) => {

@@ -21,11 +21,12 @@ const cardContainer = ({ filter }) => {
     }
     const {type, category} = filter
     const dispatch = useDispatch();
-    const properties = useSelector(getProperties);
     const [filterProp , setFilterProp] = useState([])
+    const { properties, hasFetched}= useSelector(state => state.properties);
     useEffect(()=> {
-        if (properties.length == 0) dispatch(getPropertiesAsync());
-    }, [dispatch, properties]);
+        if (!hasFetched) dispatch(getPropertiesAsync());
+        console.log( properties, hasFetched)
+    }, [dispatch, hasFetched]);
     useEffect(()=> {
         setFilterProp(filterProperties(properties, type, category));
 

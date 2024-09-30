@@ -5,7 +5,8 @@ const url = import.meta.env.VITE_API_BACK_URL;
 // const url = 'http://localhost:4000/api';
 const initialState = {
     properties: [],
-    loading: false
+    loading: false,
+    hasFetched: false
 }
 export const createPropertyAsync = createAsyncThunk("admin/create", async ({property, token}) => {
     try {
@@ -69,6 +70,7 @@ const propertiesSlice = createSlice({
             })
             .addCase(getPropertiesAsync.fulfilled, (state, action) => {
                 state.loading = false;
+                state.hasFetched = true;
                 state.properties = action.payload.data
             })
             .addCase(getPropertiesAsync.pending, (state) => {
