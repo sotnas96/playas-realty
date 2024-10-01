@@ -24,7 +24,6 @@ const FilterNprop = () => {
                                 <option value=''selected disabled>Compra o venta</option>
                                 <option  value="sale" className=''>Compra</option>
                                 <option value="rent" className=''>Alquiler</option>
-
                             </select>
                         </div>
                         <div className='div-form'>

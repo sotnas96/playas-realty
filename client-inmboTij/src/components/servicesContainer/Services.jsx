@@ -2,15 +2,15 @@ import "./service.css"
 const Services = () => {
     return (
         <div className="p-4 m-2">
-            <div className="p-4 w-75 m-auto">
+            <div className="p-4 m-auto">
                 <div className='style-div m-auto'>
 
                 </div>
-                <div className="fw-bolder fs-4">
-                    <p>20 años de <span className="text-decoration-underline" style={{color:'#ffac12'}}>experiencia</span></p>
+                <div className="">
+                    <p className="fs-3 fw-semibold">20 años de <span className="text-decoration-underline" style={{color:'#ffac12'}}>experiencia</span></p>
                 </div>
-                <div className="logo-service-md w-75 m-auto">
-                    <p>Llevamos de la mano a nuestros clientes para la compra-venta de propiedades, alquileres y administración de propiedades</p>
+                <div className="logo-service-md m-auto">
+                    <p className="fw-lighter lh-sm m-0 fs-6">Llevamos de la mano a nuestros clientes para la compra-venta de propiedades, alquileres y administración de propiedades</p>
                 </div>
             </div>
             <div className="p-4">

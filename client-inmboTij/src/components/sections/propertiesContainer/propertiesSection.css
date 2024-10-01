@@ -12,6 +12,7 @@
     display: inline;
     background-color: white;
     border: none;
+    color: black;
     
 }
 .style-div{
@@ -38,6 +39,7 @@
     padding: 8px;
     width: 120px;
     margin-right: 5px;
+    color: black;
 
 }
 @media (max-width: 767px) {

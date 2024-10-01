@@ -23,7 +23,7 @@ const LandignInfoContainer = () => {
                                     <p className='fw-lighter lh-sm m-0 fs-6'>Somos una agencia inmobiliaria en Tijuana con más de 20 años de experiencia en la compra-venta de propiedades y en la elaboración de proyectos inmobiliarios.</p>
                                 </div>
                                 <div className='my-4'>
-                                    <button className="contact-button fw-semihold section-button ">
+                                    <button className="contact-button  section-button ">
                                         <p className='d-inline p-2 fs-6'> Contáctanos </p>
                                         <span className="mx-2 arrow-button"> <FaArrowRightLong /> </span>
                                     </button>
@@ -45,8 +45,8 @@ const LandignInfoContainer = () => {
                                     <p className='fw-lighter lh-sm m-0 fs-6' >Llevando de la mano a nuestros clientes en la compra-venta de propiedades, casas, terrenos y departamentos.</p>
                                 </div>
                                 <div className='my-4'>
-                                    <button className="contact-button fw-semihold section-button " onClick={scrollIntoForm}>
-                                        <p className='d-inline p-2 fs-6'> Contáctanos </p>
+                                    <button className="contact-button section-button " onClick={scrollIntoForm}>
+                                        <p className='d-inline p-2'> Contáctanos </p>
                                         <span className="mx-2 arrow-button"> <FaArrowRightLong /> </span>
                                     </button>
                                 </div>

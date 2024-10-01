@@ -11,6 +11,9 @@ const CarouselContainer = () => {
                     <div>
                         <div className='style-div center-div m-auto'>
                         </div>
+                        <div>
+                            <p className="fw-semibold fs-3">Lo que dicen nuestros clientes</p>
+                        </div>
                     </div>
                     <div className="carousel-inner">
                         <div className="carousel-item active p-2 caja-car ">
