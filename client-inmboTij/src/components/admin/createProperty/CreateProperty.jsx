@@ -59,7 +59,6 @@ const CreateProperty = (props) => {
  
     }  
     const handleForm = async(event)=> {
-        console.log(property)
         setSuccessMsg(false)
         setLoadingProperty(true)
         event.preventDefault();
@@ -83,7 +82,8 @@ const CreateProperty = (props) => {
             imageFiles.forEach((file, index) => {
                 formData.append('houseImg', file);
             })
-            const response = await dispatch(createPropertyAsync({property: formData, token}));
+            const response = await dispatch(createPropertyAsync({property: formData, token}));3
+            console.log(response);
             if (! response.payload?.error) {
                 setSuccessMsg(true);
                 setTimeout(()=> {
@@ -219,7 +219,7 @@ const CreateProperty = (props) => {
                     </div>
 
                     <div className="col-mb-3">
-                        <label for="formFileMultiple" className="form-label">Imagenes</label>
+                        <label for="formFileMultiple" className="form-label">Suba hasta 40 imagenes</label>
                         <input name='houseImg' className="form-control" type="file" id="formFileMultiple" multiple onChange={handleImgInput}/>
                         {houseImages.map((img, index) => (
                             <img src={img} key={index} alt={`house img n ${index+1}`} className="small-img-form"/>
