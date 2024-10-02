@@ -8,6 +8,7 @@ const Property = new Schema({
     address: String,
     sqrft: String,
     price: Number,
+    currency: String,
     beds: Number,
     baths: Number,
     year: Number,

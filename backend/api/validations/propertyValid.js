@@ -37,10 +37,6 @@ const propertyValidation = [
     body("baths")
         .trim()
         .notEmpty()
-        .isNumeric(),  
-    body("year")
-        .trim()
-        .notEmpty()
-        .isNumeric()  
+        .isNumeric(),    
 ]
 module.exports = propertyValidation;
