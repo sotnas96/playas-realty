@@ -87,24 +87,7 @@ const EditProperty = () => {
                             </div>
                         </div>
                         
-                        <div className="col-md-6">
-                            <label for="input" className="form-label">City: <span className="fw-bolder">{property[0].city}</span></label>
-                            <div className="input-group mb-3">
-                                <input name="city"  type="text" className="form-control"  onChange={handleInput}/>
-                            </div>
-                        </div>
-                        <div className="col-md-4">
-                        <label for="input" className="form-label">State: <span className="fw-bolder">{property[0].state}</span></label>
-                            <div className="input-group mb-3">
-                                <input name="state"  type="text" className="form-control"  onChange={handleInput}/>
-                            </div>
-                        </div>
-                        <div className=" col-md-2">
-                            <label for="input" className="form-label">Zip: <span className="fw-bolder">{property[0].zip}</span></label>
-                            <div className="input-group mb-3">
-                                <input name="zip"  type="text" className="form-control"  onChange={handleInput}/>
-                            </div>
-                        </div>
+                       
                         <div className='col-md-4'>
                             <label htmlFor="" className="form-label">Type: <span className="fw-bolder">{property[0].type}</span></label>
                             <select name="type" className="form-select" aria-label="Default select example" onChange={handleInput}>
@@ -117,24 +100,23 @@ const EditProperty = () => {
                         <div className='col-md-4'>
                             <label for="input" className="form-label">Price: <span className="fw-bolder">${property[0].price}</span> </label>
                             <div className="input-group mb-3">
-                                <span className="input-group-text">$</span>
+                                <select name="currency" className="form-select input-group-text" aria-label="Default select example" onChange={handleInput} >
+                                    <option value="" selected disabled>$</option>
+                                    <option value="us$">us $</option>
+                                    <option value="mx$">mx $</option>
+                                </select>
                                 <input name="price" type="text" className="form-control" aria-label="Amount (to the nearest dollar)" onChange={handleInput}/>
                                 <span className="input-group-text">.00</span>
                             </div>
                         </div>
                         <div className='col-md-4'>
-                            <label for="input" className="form-label">Sqrft:  <span className="fw-bolder">{property[0].sqrft} m2</span></label>
+                            <label for="input" className="form-label">Superficie:  <span className="fw-bolder">{property[0].sqrft} m2</span></label>
                             <div className="input-group mb-3">
                                 <input name="sqrft" type="text" className="form-control" aria-label="Amount (to the nearest dollar)" onChange={handleInput}/>
                                 <span className="input-group-text">m2</span>
                             </div>
                         </div>
-                        <div className='col-md-4'>
-                            <label for="input" className="form-label">Year: <span className="fw-bolder">{property[0].year}</span></label>
-                            <div className="input-group mb-3">
-                                <input name="year"  type="text" className="form-control" aria-label="Amount (to the nearest dollar)" onChange={handleInput}/>
-                            </div>
-                        </div>
+                        
                         <div className="col-md-4">
                             <label for="inputCity" className="form-label">Beds: <span className="fw-bolder">{property[0].beds}</span></label>
                             <input name="beds" type="number" className="form-control" id="inputCity" onChange={handleInput}/>
@@ -145,27 +127,32 @@ const EditProperty = () => {
                             
                         </div>
                         <div className='col-md-4'>
-                            <label htmlFor="" className="form-label">Parking: <span className="fw-bolder">{property[0].parking}</span></label>
-                            <select name="parking" className="form-select" aria-label="Default select example" onChange={handleInput}>
-                                <option value=""selected disable>Choose..</option>
-                                <option value="indoor">Indoor</option>
-                                <option value="outdoor">Outdoor</option>
-                            </select>
+                            <label htmlFor="" className="form-label">N° Carros: <span className="fw-bolder">{property[0].parking}</span></label>
+                            <input name="parking" min='1' type="number" className="form-control" id="inputState" onChange={handleInput}/>
                         </div>
                         
                         <div className='col-md-4'>
-                            <label htmlFor="" className="form-label">Pets: <span className="fw-bolder">{property[0].pets ? 'yes' : 'no'}</span></label>
+                            <label htmlFor="" className="form-label">Mascotas: <span className="fw-bolder">{property[0].pets ? 'yes' : 'no'}</span></label>
                             <select name="pets" className="form-select" aria-label="Default select example" onChange={handleInput}>
-                                <option value="true" selected>Yes</option>
-                                <option value="false">No</option>
+                                <option value=""selected disabled>Elige</option>
+                                <option value="true" >SI</option>
+                                <option value="false">NO</option>
                             </select>
                         </div>
                         <div className='col-md-4'>
-                            <label htmlFor="" className="form-label">Category: <span className="fw-bolder">{property[0].category}</span></label>
+                            <label htmlFor="" className="form-label">Categoria: <span className="fw-bolder">{property[0].category}</span></label>
                             <select name="category" className="form-select" aria-label="Default select example" onChange={handleInput}>
                                 <option value=""selected disable>Choose..</option>
                                 <option value="rent" >Rent</option>
                                 <option value="sale">Sale</option>
+                            </select>
+                        </div>
+                        <div className="mb-3 col-md-4">
+                            <label htmlFor="" className="form-label">Disponible ahora: <span className="fw-bolder">{property[0].avaialable ? 'yes' : 'no'}</span></label>
+                            <select name="available" className="form-select" aria-label="Default select example" onChange={handleInput}>
+                                <option value=""selected disable>Elegir..</option>
+                                <option value="true">SI</option>
+                                <option value="false" >NO</option>
                             </select>
                         </div>
                         <div className="mb-3 col-md-6">
@@ -173,43 +160,22 @@ const EditProperty = () => {
                                 <label htmlFor="">Utilities: <span className="fw-bolder">{property[0].utilities}</span></label> 
                             </div>
                             <div className="form-check form-check-inline">
-                                <input name="utilities" className="form-check-input" type="checkbox" id="inlineCheckbox1" value="electricity" onChange={handleInputUtilities}/>
-                                <label className="form-check-label" for="inlineCheckbox1">Electricity</label>
+                                <input name="utilities" className="form-check-input" type="checkbox" id="inlineCheckbox1" value="electricidad" onChange={handleInputUtilities}/>
+                                <label className="form-check-label" for="inlineCheckbox1">Electricidad</label>
                             </div>
                             <div className="form-check form-check-inline">
-                                <input name="utilities" className="form-check-input" type="checkbox" id="inlineCheckbox2" value="water" onChange={handleInputUtilities}/>
-                                <label className="form-check-label" for="inlineCheckbox2">Water</label>
+                                <input name="utilities" className="form-check-input" type="checkbox" id="inlineCheckbox2" value="agua" onChange={handleInputUtilities}/>
+                                <label className="form-check-label" for="inlineCheckbox2">agua</label>
                             </div>
                                 <div className="form-check form-check-inline">
                                 <input name="utilities" className="form-check-input" type="checkbox" id="inlineCheckbox3" value="gas" onChange={handleInputUtilities}/>
                                 <label className="form-check-label" for="inlineCheckbox3">Gas</label>
                             </div>
                         </div>
-                        <div className="mb-3 col-md-6">
-                            <label htmlFor="" className="form-label">Available now: <span className="fw-bolder">{property[0].avaialable ? 'yes' : 'no'}</span></label>
-                            <select name="available" className="form-select" aria-label="Default select example" onChange={handleInput}>
-                                <option value=""selected disable>Elegir..</option>
-                                <option value="true">SI</option>
-                                <option value="false" >NO</option>
-                            </select>
-                        </div>
+                        
                         <div className="mb-3">
-                            <label for="exampleFormControlTextarea1" className="form-label">Description: </label>
-                            <p className="fw-semibold">{property[0].description}</p> 
+                            <label for="exampleFormControlTextarea1" className="form-label">Descripcion: </label>
                             <textarea name="description" className="form-control" id="exampleFormControlTextarea1" rows="3" onChange={handleInput}></textarea>
-                        </div>
-                        <div className="mb-3">
-                            <label for="exampleFormControlTextarea1" className="form-label">Extras</label>
-                            <input name="extras" className="form-control" id="exampleFormControlTextarea1" rows="3"  require ref={extraInput}></input>
-                            <div className="d-flex">
-                                <button className="btn-primary btn mt-2 " onClick={addExtra} type="button"> add </button>
-                                <button className="btn-danger btn mt-2 mx-2" onClick={removeExtras} type="button">remove</button>
-                                <div className="d-flex align-items-center">
-                                    { extras.length > 0 ?  extras.map((item, index) => (
-                                        <p key={index} className="fw-semibold m-0 mt-2 border p-2 mx-2"> <CiCircleCheck style={{color: 'green'}}/> {item}</p>
-                                    )) : ''}
-                                </div>
-                            </div>
                         </div>
 
                         <div className="col-mb-3">

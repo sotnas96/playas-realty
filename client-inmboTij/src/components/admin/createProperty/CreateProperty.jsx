@@ -8,8 +8,8 @@ const propertyData = {
     property: '',
     address:'',
     price:'',
+    currency:'',
     sqrft:'',
-    year:'',
     beds:'',
     baths:'',
     parking:'',
@@ -59,6 +59,7 @@ const CreateProperty = (props) => {
  
     }  
     const handleForm = async(event)=> {
+        console.log(property)
         setSuccessMsg(false)
         setLoadingProperty(true)
         event.preventDefault();
@@ -82,14 +83,14 @@ const CreateProperty = (props) => {
             imageFiles.forEach((file, index) => {
                 formData.append('houseImg', file);
             })
-            const response = await dispatch(createPropertyAsync({property: formData, token}));
-            if (! response.payload?.error) {
-                setSuccessMsg(true);
-                setTimeout(()=> {
-                    setLoadingProperty(false);
-                    navigate("/admin/properties")
-                },1000)
-            }
+            // const response = await dispatch(createPropertyAsync({property: formData, token}));
+            // if (! response.payload?.error) {
+            //     setSuccessMsg(true);
+            //     setTimeout(()=> {
+            //         setLoadingProperty(false);
+            //         navigate("/admin/properties")
+            //     },1000)
+            // }
 
         } catch (error) {
             console.log(error);
@@ -116,7 +117,7 @@ const CreateProperty = (props) => {
                         <label for="inputAddress" className="form-label">Address</label>
                     </div>
                     <div className='col-md-4'>
-                        <label htmlFor="" className="form-label">Type</label>
+                        <label htmlFor="" className="form-label">Tipo</label>
                         <select name="type" className="form-select" aria-label="Default select example" onChange={handleInput}>
                             <option value=""selected disable>Choose..</option>
                             <option value="casa" >Casa</option>
@@ -127,55 +128,71 @@ const CreateProperty = (props) => {
                     <div className='col-md-4'>
                         <label for="input" className="form-label">Price</label>
                         <div className="input-group mb-3">
-                            <span className="input-group-text">$</span>
+                            <select name="currency" className="form-select input-group-text" aria-label="Default select example" onChange={handleInput} >
+                                <option value="" selected disabled>$</option>
+                                <option value="us$">us $</option>
+                                <option value="mx$">mx $</option>
+                            </select>
+                            {/* <span className="input-group-text">$</span> */}
+
                             <input name="price" type="text" className="form-control" aria-label="Amount (to the nearest dollar)" onChange={handleInput}/>
                             <span className="input-group-text">.00</span>
                         </div>
                     </div>
                     <div className='col-md-4'>
-                        <label for="input" className="form-label">Sqrft</label>
+                        <label for="input" className="form-label">Superficie</label>
                         <div className="input-group mb-3">
                             <input name="sqrft" type="text" className="form-control" aria-label="Amount (to the nearest dollar)" onChange={handleInput}/>
                             <span className="input-group-text">m2</span>
                         </div>
                     </div>
-                    <div className='col-md-4'>
+                    {/* <div className='col-md-4'>
                         <label for="input" className="form-label">Year</label>
                         <div className="input-group mb-3">
                             <input name="year" type="text" className="form-control" aria-label="Amount (to the nearest dollar)" onChange={handleInput}/>
                         </div>
-                    </div>
+                    </div> */}
                     <div className="col-md-4">
-                        <label for="inputCity" className="form-label">Beds</label>
+                        <label for="inputCity" className="form-label">Habitaciones</label>
                         <input name="beds" min='1' type="number" className="form-control" id="inputCity" onChange={handleInput}/>
                     </div>
                     <div className="col-md-4">
-                        <label for="inputState" className="form-label">Bath</label>
+                        <label for="inputState" className="form-label">Baños</label>
                         <input name="baths" min='1' type="number" className="form-control" id="inputState" onChange={handleInput}/>
                         
                     </div>
                     <div className='col-md-4'>
-                        <label htmlFor="" className="form-label">Parking</label>
-                        <select name="parking" className="form-select" aria-label="Default select example" onChange={handleInput}>
+                        <label htmlFor="" className="form-label">N° Carros</label>
+                        <input name="parking" min='1' type="number" className="form-control" id="inputState" onChange={handleInput}/>
+                        {/* <select name="parking" className="form-select" aria-label="Default select example" onChange={handleInput}>
                             <option value=""selected disable>Choose..</option>
                             <option value="indoor">Indoor</option>
                             <option value="outdoor">Outdoor</option>
-                        </select>
+                        </select> */}
                     </div>
                     
                     <div className='col-md-4'>
-                        <label htmlFor="" className="form-label">Pets</label>
+                        <label htmlFor="" className="form-label">Mascotas</label>
                         <select name="pets" className="form-select" aria-label="Default select example" onChange={handleInput}>
-                            <option value="true" selected>Yes</option>
-                            <option value="false">No</option>
+                            <option value="" selected disabled>Elige..</option>
+                            <option value="true">SI</option>
+                            <option value="false">NO</option>
                         </select>
                     </div>
                     <div className='col-md-4'>
-                        <label htmlFor="" className="form-label">Category</label>
+                        <label htmlFor="" className="form-label">Categoria</label>
                         <select name="category" className="form-select" aria-label="Default select example" onChange={handleInput}>
-                            <option value=""selected disable>Choose..</option>
+                            <option value=""selected disable>Elige..</option>
                             <option value="rent">Rent</option>
                             <option value="sale">Sale</option>
+                        </select>
+                    </div>
+                    <div className="mb-3 col-md-4">
+                        <label htmlFor="" className="form-label">Disponible Ahora</label>
+                        <select name="available" className="form-select" aria-label="Default select example" onChange={handleInput}>
+                            <option value=""selected disable>Elegir..</option>
+                            <option value="true" >SI</option>
+                            <option value="false" >NO</option>
                         </select>
                     </div>
                     <div className="mb-3 col-md-6">
@@ -183,33 +200,26 @@ const CreateProperty = (props) => {
                             <label htmlFor="">Utilities</label> 
                         </div>
                         <div className="form-check form-check-inline">
-                            <input name="utilities" className="form-check-input" type="checkbox" id="inlineCheckbox1" value="electricity" onChange={handleInputUtilities}/>
-                            <label className="form-check-label" for="inlineCheckbox1">Electricity</label>
+                            <input name="utilities" className="form-check-input" type="checkbox" id="inlineCheckbox1" value="electricidad" onChange={handleInputUtilities}/>
+                            <label className="form-check-label" for="inlineCheckbox1">Electricidad</label>
                         </div>
                         <div className="form-check form-check-inline">
-                            <input name="utilities" className="form-check-input" type="checkbox" id="inlineCheckbox2" value="water" onChange={handleInputUtilities}/>
-                            <label className="form-check-label" for="inlineCheckbox2">Water</label>
+                            <input name="utilities" className="form-check-input" type="checkbox" id="inlineCheckbox2" value="agua" onChange={handleInputUtilities}/>
+                            <label className="form-check-label" for="inlineCheckbox2">Agua</label>
                         </div>
                             <div className="form-check form-check-inline">
                             <input name="utilities" className="form-check-input" type="checkbox" id="inlineCheckbox3" value="gas" onChange={handleInputUtilities}/>
                             <label className="form-check-label" for="inlineCheckbox3">Gas</label>
                         </div>
                     </div>
-                    <div className="mb-3 col-md-6">
-                        <label htmlFor="" className="form-label">Available now</label>
-                        <select name="available" className="form-select" aria-label="Default select example" onChange={handleInput}>
-                            <option value=""selected disable>Elegir..</option>
-                            <option value="true" >SI</option>
-                            <option value="false" >NO</option>
-                        </select>
-                    </div>
+                    
                     <div className="mb-3">
                         <label for="exampleFormControlTextarea1" className="form-label">Description</label>
                         <textarea name="description" className="form-control" id="exampleFormControlTextarea1" rows="3" onChange={handleInput}></textarea>
                     </div>
 
                     <div className="col-mb-3">
-                        <label for="formFileMultiple" className="form-label">Multiple files input example</label>
+                        <label for="formFileMultiple" className="form-label">Imagenes</label>
                         <input name='houseImg' className="form-control" type="file" id="formFileMultiple" multiple onChange={handleImgInput}/>
                         {houseImages.map((img, index) => (
                             <img src={img} key={index} alt={`house img n ${index+1}`} className="small-img-form"/>

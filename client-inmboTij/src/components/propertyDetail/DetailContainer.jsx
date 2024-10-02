@@ -61,7 +61,7 @@ const DetailContainer = () => {
                                 <p>{property.address}</p>
                             </div>
                             <div className="text-end">
-                                <p className="fs-2 fw-semibold my-1">usd$ {property.price}</p>
+                                <p className="fs-2 fw-semibold my-1">{property.currency} {property.price}</p>
                                 <p>{property.sqrft}m2</p>
                             </div>
                         </div>
