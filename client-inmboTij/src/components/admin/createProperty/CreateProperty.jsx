@@ -83,14 +83,14 @@ const CreateProperty = (props) => {
             imageFiles.forEach((file, index) => {
                 formData.append('houseImg', file);
             })
-            // const response = await dispatch(createPropertyAsync({property: formData, token}));
-            // if (! response.payload?.error) {
-            //     setSuccessMsg(true);
-            //     setTimeout(()=> {
-            //         setLoadingProperty(false);
-            //         navigate("/admin/properties")
-            //     },1000)
-            // }
+            const response = await dispatch(createPropertyAsync({property: formData, token}));
+            if (! response.payload?.error) {
+                setSuccessMsg(true);
+                setTimeout(()=> {
+                    setLoadingProperty(false);
+                    navigate("/admin/properties")
+                },1000)
+            }
 
         } catch (error) {
             console.log(error);
