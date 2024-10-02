@@ -6,8 +6,8 @@ const upload = require("../utils/multer");
 
 
 //add middleware (check user login)
-adminRoute.post("/create", upload.array('houseImg', 15), propertyValidation, adminController.createProperty)
-adminRoute.patch("/edit", upload.array('houseImg', 15), adminController.editProperty)
+adminRoute.post("/create", upload.array('houseImg', 40), propertyValidation, adminController.createProperty)
+adminRoute.patch("/edit", upload.array('houseImg', 40), adminController.editProperty)
 adminRoute.delete("/delete", adminController.deleteProperty)
 adminRoute.get("/inqueries", adminController.getInqueries)
 module.exports = adminRoute;
