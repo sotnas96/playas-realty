@@ -4,8 +4,8 @@ const ContactContainer = () => {
     return (
         <div className="bg-white p-4">
             <div className="p-2">
-                <ContactCard/>
-                <ContactCard/>
+                <ContactCard name={'Barbara Mendez'}/>
+                <ContactCard name={'Rene Urquidi'}/>
             </div> 
         </div>
     )

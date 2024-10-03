@@ -10,7 +10,6 @@ const Services = () => {
                     <p className="fs-3 fw-semibold">20 años de <span className="text-decoration-underline" style={{color:'#ffac12'}}>experiencia</span></p>
                 </div>
                 <div className="logo-service-md m-auto">
-                    <p className="fw-lighter lh-sm m-0 fs-6">Llevamos de la mano a nuestros clientes para la compra-venta de propiedades, alquileres y administración de propiedades</p>
                 </div>
             </div>
             <div className="p-4">
@@ -20,11 +19,10 @@ const Services = () => {
                             <img src="https://asset.skoiy.com/9b80a6f781ff336f/yrwwqpnyb7ys.jpg?w=970&q=90" alt="" className="card-img"/>
                         </div>
                         <div className="text-start p-3">
-                            <div className="fw-semibold">
+                            <div className="fw-semibold fs-3">
                                 <p>Compra-venta</p>
                             </div>
                             <div className="fw-lighter">
-                                <p>2 Past more emotionless this along goodness this sad wow manatee mongos</p>
                             </div>
                         </div>
                     </div>
@@ -33,11 +31,10 @@ const Services = () => {
                             <img src="https://asset.skoiy.com/9b80a6f781ff336f/yrwwqpnyb7ys.jpg?w=970&q=90" alt="" className="card-img"/>
                         </div>
                         <div className="text-start p-3">
-                            <div className="fw-semibold">
+                            <div className="fw-semibold fs-3">
                                 <p>Alquiler</p>
                             </div>
                             <div className="fw-lighter">
-                                <p>2 Past more emotionless this along goodness this sad wow manatee mongos</p>
                             </div>
                         </div>
                     </div>
@@ -46,11 +43,10 @@ const Services = () => {
                             <img src="https://asset.skoiy.com/9b80a6f781ff336f/yrwwqpnyb7ys.jpg?w=970&q=90" alt="" className="card-img"/>
                         </div>
                         <div className="text-start p-3">
-                            <div className="fw-semibold">
+                            <div className="fw-semibold fs-3">
                                 <p>Administración de propiedades</p>
                             </div>
                             <div className="fw-lighter">
-                                <p>2 Past more emotionless this along goodness this sad wow manatee mongos</p>
                             </div>
                         </div>
                     </div>

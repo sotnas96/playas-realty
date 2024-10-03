@@ -1,7 +1,7 @@
 import { FaArrowRightLong } from "react-icons/fa6";
 import "./contact.css"
 import scrollIntoForm from "../scrollIntoForm/scrollIntoForm";
-const ContactCard = () => {
+const ContactCard = ({ name }) => {
     
     return (
         <div className="contact-card p-4 my-4">
@@ -14,7 +14,7 @@ const ContactCard = () => {
 
                     </div>
                     <div>
-                        <p className="fw-semibold fs-4">Barbara Mendex</p>
+                        <p className="fw-semibold fs-4">{ name }</p>
                     </div>
                     <div className="info-contact">
                         <p className="fw-lighter">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusamus repudiandae quis dignissimos expedita magnam doloremque veritatis, mollitia officiis atque, temporibus accusantium, consectetur voluptate omnis dolorem culpa. Tempora quibusdam ipsam deleniti.</p>
