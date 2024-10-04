@@ -1,39 +1,52 @@
 const bucket = require("../firebaseConfig");
 const sharp = require("sharp")
-const uploadFileToFirebase = (files) => {
-    const uploadPromises = files.map(file => {
-        return sharp(file.buffer)
-            .resize({ width:1024 })
-            .toBuffer()
-            .then(buffer => {
-                return new Promise((resolve, reject) => {
-                    const blob = bucket.file(`houseImg/${file.originalname + Date.now()}`);
-                    const blobStream = blob.createWriteStream({
-                        resumable: true, // Enable resumable uploads
-                        metadata: {
-                            contentType: file.mimetype,
-                        },
-                    });
-
-                    blobStream.on('error', (err) => {
-                        console.error('Upload error:', err);
-                        reject(err);
-                    });
-
-                    blobStream.on('finish', async () => {
-                        try {
-                            await blob.makePublic();
-                            let publicUrl = `https://storage.googleapis.com/${bucket.name}/${blob.name}`;
-                            resolve(publicUrl);
-                        } catch (err) {
-                            console.error('Error making file public:', err);
-                            reject(err);
-                        }
-                    });
-
-                    blobStream.end(buffer); // Upload compressed image buffer
-                });
+const heicConvert = require('heic-convert')
+const uploadFileToFirebase = (files, type, houseName ) => {
+    const uploadPromises = files.map(async (file) => {
+        let fileBuffer = file.buffer
+        //file trae: fieldname, originalname, encoding, mimetype, buffer, size
+        const { format }= await sharp(file.buffer).metadata();
+        //metadata trae format, size, width, height, space, channels, etc.
+        if (format == 'heif' || format == 'heic'){
+            fileBuffer = await heicConvert({
+                buffer: fileBuffer,
+                format: 'JPEG',
+                quality: 1
             });
+        }
+        return sharp(fileBuffer)
+                .resize(1024, 1024)
+                .jpeg({quality: 80})
+                .toBuffer()
+                .then(buffer => {
+                    return new Promise((resolve, reject) => {
+                        const blob = bucket.file(`propiedades/${type}/${houseName}/${Date.now()}`);
+                        const blobStream = blob.createWriteStream({
+                            resumable: true, // Enable resumable uploads
+                            metadata: {
+                                contentType: file.mimetype,
+                            },
+                        });
+
+                        blobStream.on('error', (err) => {
+                            console.error('Upload error:', err);
+                            reject(err);
+                        });
+
+                        blobStream.on('finish', async () => {
+                            try {
+                                await blob.makePublic();
+                                let publicUrl = `https://storage.googleapis.com/${bucket.name}/${blob.name}`;
+                                resolve(publicUrl);
+                            } catch (err) {
+                                console.error('Error making file public:', err);
+                                reject(err);
+                            }
+                        });
+
+                        blobStream.end(buffer); // Upload compressed image buffer
+                    });
+                });
     });
     return Promise.all(uploadPromises);
 };
