@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { CiCircleCheck } from "react-icons/ci";
 import { useDispatch } from 'react-redux';
-import { createPropertyAsync } from "../../../store/properties";
+import { createPropertyAsync, uploadNewProperty } from "../../../store/properties";
 import { useNavigate } from "react-router-dom";
 import { RingLoader } from "react-spinners";
 const propertyData = {
@@ -31,9 +31,13 @@ const CreateProperty = (props) => {
     const [utilitiesList, setUtilitiesList] = useState([])
     const [errors, setErrors] = useState(propertyData)
     const [houseImages, setHouseImages]= useState([])
+    const [progress, setProgress] = useState(0);
+    const [amountOfBatches, setAmountofBatches] = useState(0);
     const [imageFiles, setImageFiles] = useState([]);
     const [loadingProperty, setLoadingProperty] = useState(false);
     const [successMsg, setSuccessMsg] = useState(false);
+    const concurrentLimit = 10;
+
     const handleInput = event => {
         setProperty({...property, [event.target.name]: event.target.value})
     }
@@ -44,6 +48,7 @@ const CreateProperty = (props) => {
     useEffect (()=> {
         
         setProperty({...property, houseImg: imageFiles})
+        setAmountofBatches(Math.ceil(imageFiles.length / concurrentLimit))
     }, [imageFiles])
     const handleInputUtilities = event => {
         const { checked, name, value} = event.target
@@ -56,6 +61,7 @@ const CreateProperty = (props) => {
         const imgUrls = files.map(file => URL.createObjectURL(file));
         setImageFiles(files);
         setHouseImages(imgUrls);
+        
  
     }  
     const handleForm = async(event)=> {
@@ -79,21 +85,40 @@ const CreateProperty = (props) => {
             for (const key in property) {
                 formData.append(key, property[key]);
             }
-            imageFiles.forEach((file, index) => {
-                formData.append('houseImg', file);
-            })
-            const response = await dispatch(createPropertyAsync({property: formData, token}));3
-            console.log(response);
-            if (! response.payload?.error) {
-                setSuccessMsg(true);
-                setTimeout(()=> {
-                    setLoadingProperty(false);
-                    navigate("/admin/properties")
-                },1000)
+            let propertyId = null;
+            const uploadImageBatch = async (imageBatch, batchNumber) => {
+                const batchFormData = new FormData();
+                for (const [key, value] of formData.entries()){
+                    batchFormData.append(key, value);
+                }
+                if (propertyId) batchFormData.append('id', propertyId);
+                imageBatch.forEach(file => {
+                    batchFormData.append('houseImg', file);
+                })
+                const response = await dispatch(createPropertyAsync({property: batchFormData, token}))
+                if (batchNumber === amountOfBatches) dispatch(uploadNewProperty(response.payload.data))
+                propertyId = (response.payload?.data?._id) || null;
+                
+            };
+            const imageBatches = [];
+            for (let i=0; i < imageFiles.length; i+= concurrentLimit){
+                imageBatches.push(imageFiles.slice(i, i+ concurrentLimit));
             }
+            for (let i = 0; i < imageBatches.length; i++){
+            
+                await uploadImageBatch(imageBatches[i], i+1);
+                setProgress((((i+1)/amountOfBatches)*100).toPrecision(3));
+            }
+
+            setSuccessMsg(true);
+            setTimeout(()=> {
+                setLoadingProperty(false);
+                navigate("/admin/properties")
+            },1000)
 
         } catch (error) {
             console.log(error);
+            setLoadingProperty(false)
         }
 
     }
@@ -241,7 +266,11 @@ const CreateProperty = (props) => {
                     { successMsg ?
                         (<p className="text-success fw-bold my-2">Property loaded!</p>)
                       : 
-                        (<p>Loading new property...</p>)
+                        (<div>
+                            <p className="m-2">Cargando imagenes porfavor espere...</p>
+                            <p className="fs-3 fw-bold">{progress}%</p>
+                        </div>
+                        )
                      }
                     <div className="d-flex justify-content-center">
                         <RingLoader color='#ffd814'/>

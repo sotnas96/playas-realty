@@ -7,15 +7,17 @@ const adminController = {
         if (!req.files) {
             return res.status(400).json({success:false, error: 'please upload images'})
         }
-        const imgsUrls = await uploadFileToFirebase(req.files);
+        const imgsUrls = await uploadFileToFirebase(req.files,  req.body.type, req.body.property);
 
         const errors = validationResult(req);
         if (! errors.isEmpty()) {
             return res.status(400).json(errors.array());
         }
         try {    
-            const data = await Property.create({...req.body, images: imgsUrls})
-            return res.json({success:true, data:data})
+            const property = req.body?.id ?  await Property.findByIdAndUpdate({_id: req.body.id},{$push: { images: { $each: imgsUrls}} }, { new: true} )
+                                             : 
+                                            await Property.create({...req.body, images: imgsUrls});
+            return res.json({success:true, data: property})
         } catch(error) {
             res.status(400).json({success: false, error: error.message})
         }

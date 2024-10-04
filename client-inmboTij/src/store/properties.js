@@ -1,12 +1,13 @@
 import { createAsyncThunk, createSelector, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const url = import.meta.env.VITE_API_BACK_URL;
-// const url = 'http://localhost:4000/api';
+// const url = import.meta.env.VITE_API_BACK_URL;
+const url = 'http://localhost:4000/api';
 const initialState = {
     properties: [],
     loading: false,
-    hasFetched: false
+    hasFetched: false,
+    creationLoading: false
 }
 export const createPropertyAsync = createAsyncThunk("admin/create", async ({property, token}) => {
     try {
@@ -38,7 +39,6 @@ export const updatePropertyAsync = createAsyncThunk("admin/update", async ({prop
                 'Content-Type':'multipart/form-data'
             }
         });
-        console.log(response);
         return response.data
     } catch(error) {
         return error.response.data
@@ -61,12 +61,16 @@ const propertiesSlice = createSlice({
     name: 'properties',
     initialState,
     reducers:{
-        
+        uploadNewProperty: (state,action) => {
+            state.properties.push(action.payload)
+            state.creationLoading = false;
+        }
     },
     extraReducers: (builder) => {
         builder
             .addCase(createPropertyAsync.fulfilled, (state, action) => {
-                state.properties.push(action.payload.data)
+                // state.properties.push(action.payload.data)
+                state.creationLoading = true
             })
             .addCase(getPropertiesAsync.fulfilled, (state, action) => {
                 state.loading = false;
@@ -98,4 +102,5 @@ export const selectPropertyById = createSelector(
     }
     
 );
+export const { uploadNewProperty } = propertiesSlice.actions;
 export default propertiesSlice.reducer;
