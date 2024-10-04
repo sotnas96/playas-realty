@@ -70,14 +70,18 @@ const CreateProperty = (props) => {
         event.preventDefault();
         let errorExist = false
         errorDisplay.current.innerHTML =  `<p className=""><p/>`;
-        // Object.entries(property).forEach(([key, value]) => {
-        //     if(!value){
-        //         setLoadingProperty(false)
-        //         errorDisplay.current.innerHTML = `<p>Please complete the empty fields</p>`;
-        //         errorExist = true
-        //     }
-        // });
+        Object.entries(property).forEach(([key, value]) => {
+            if (property.type != 'terreno') {
+                if(!value && value){
+                    setLoadingProperty(false)
+                    errorDisplay.current.innerHTML = `<p>Please complete the empty fields</p>`;
+                    errorExist = true
+                }
+            }
+            return;
+        });
         if (property.houseImg.length == 0 ) errorDisplay.current.innerHTML = `<p>Please upload images</p>`;
+        console.log('paso', errorExist);
         if (errorExist) return 
         setProperty({...propertyData});
         try {

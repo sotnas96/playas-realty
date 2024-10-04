@@ -18,25 +18,21 @@ const propertyValidation = [
         .notEmpty().withMessage("Cannot be empty")
         .escape(),
     body("pets")
+        .optional()
         .trim()
-        .notEmpty().withMessage("Cannot be empty")
-        .isBoolean()
         .escape(),
     body("parking")
+        .optional()
         .trim()
-        .notEmpty().withMessage("Cannot be empty")
         .escape(),
     body("price")
         .trim()
-        .notEmpty()
-        .isNumeric(),   
+        .notEmpty(),
     body("beds")
-        .trim()
-        .notEmpty()
-        .isNumeric(),  
+        .optional()
+        .trim(),
     body("baths")
+        .optional()
         .trim()
-        .notEmpty()
-        .isNumeric(),    
 ]
 module.exports = propertyValidation;
