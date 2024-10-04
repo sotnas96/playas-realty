@@ -13,16 +13,14 @@
   .contact-card{
     display: flex;
     flex-direction: row;
+    padding: 1.5rem;
   }
-  .info-contact {
-    width: 75%;
-  }
+
   @media (max-width: 767px) {
-    .info-contact{
-        width: 100%;
-    }
+
     .contact-card{
         flex-direction: column;
+        padding: 0;
     }
     .contact-img-container {
         max-width: 200px;

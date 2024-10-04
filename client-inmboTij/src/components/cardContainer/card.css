@@ -15,7 +15,7 @@
     transition: box-shadow 0.5s;
     position: relative;
     cursor: pointer;
-    margin-bottom: 2%;
+    margin-bottom: 3%;
 
 }
 .card:hover {
@@ -38,7 +38,7 @@
     display: flex;
     justify-content: space-around;
     margin: auto;
-    align-items: start;
+    font-size: 18px;
 }
 .img-container{
     min-height: 180px;

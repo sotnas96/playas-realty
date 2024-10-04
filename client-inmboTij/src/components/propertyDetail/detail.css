@@ -24,6 +24,18 @@
     min-height: 60vh;
     padding: 20px;
   }
+.main-descriptions {
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    text-align: start;
+    padding: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.home-name{
+    width: 50%;
+}
 .main-page{
     display: flex;
     justify-content: space-between;
@@ -75,5 +87,8 @@
     }
     .similar-carousel{
         width: 95%;
+    }
+    .home-name{
+        width: 100%;
     }
 }
