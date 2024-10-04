@@ -62,11 +62,11 @@ const DetailContainer = () => {
                             <div className="home-name">
                                 <p className="fs-2 fw-semibold my-1">{property.property}</p>
                             </div>
-                            <div>
+                            <div className="">
                                 <p className="fs-2 fw-semibold my-1">{property.currency} {property.price.toLocaleString("de-DE")}</p>
 
                             </div>
-                            <div>
+                            <div className="home-name">
                                 <p className="fs-5 fw-lighter">{property.address}</p>
                             </div>
                             <div className="">
