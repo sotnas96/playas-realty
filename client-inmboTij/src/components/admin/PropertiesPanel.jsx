@@ -5,7 +5,7 @@ import AdminProperties from "./adminProperties/AdminProperties";
 import EditProperty from "./editProperty/EditProperty";
 const PropertiesPanel = () => {
     return (
-        <div className="p-2 bg-light">
+        <div className="p-1 bg-light">
             <div className="d-flex justify-content-end">
                 <div className="mx-2">
                     <NavLink to="/admin/properties/create" className={({isActive, isPending}) => isActive ? 'apb' : ''}>

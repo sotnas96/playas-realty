@@ -5,7 +5,6 @@ import { Link, NavLink } from "react-router-dom";
 const Card = ({ props }) => {
     return (
         <div className="card">
-
             <div className="img-container">
                 <NavLink to={`/properties/detail/${props._id}`}>
                     <img src={props.images[0]} alt="" className="card-img"/>
@@ -37,7 +36,6 @@ const Card = ({ props }) => {
                     </div>
                 </div>
             </div>  
-
         </div>
     )
 };
