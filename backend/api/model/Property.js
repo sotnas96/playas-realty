@@ -13,7 +13,10 @@ const Property = new Schema({
     baths: Number,
     year: Number,
     description: String,
-    pets: Boolean,
+    pets: {
+        type: Boolean,
+        default: true
+    },
     available: Boolean,
     parking: String, //outdoor, indoor
     utilities: [String],

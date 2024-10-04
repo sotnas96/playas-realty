@@ -1,10 +1,10 @@
 import { FaArrowRightLong } from "react-icons/fa6";
 import "./contact.css"
 import scrollIntoForm from "../scrollIntoForm/scrollIntoForm";
-const ContactCard = ({ name }) => {
-    
+const ContactCard = ({card}) => {
+    console.log(card)
     return (
-        <div className="contact-card p-4 my-4">
+        <div className="contact-card my-4">
             <div className="contact-img-container">
                     <img className='contact-img' src="https://www.zillowstatic.com/bedrock/app/uploads/sites/47/how-to-choose-real-estate-agent-shutterstock_642415924-81bbd4.jpg" alt="" />
             </div>
@@ -14,10 +14,20 @@ const ContactCard = ({ name }) => {
 
                     </div>
                     <div>
-                        <p className="fw-semibold fs-4">{ name }</p>
+                        <p className="fw-bolder fs-4">{card.name}</p>
                     </div>
-                    <div className="info-contact">
-                        <p className="fw-lighter">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusamus repudiandae quis dignissimos expedita magnam doloremque veritatis, mollitia officiis atque, temporibus accusantium, consectetur voluptate omnis dolorem culpa. Tempora quibusdam ipsam deleniti.</p>
+                    <div>
+                        <p className="fs-5 fw-semibold">{card.role}</p>
+                        <p className="fs-6 fw-bold">{card.phoneNumber}</p>
+                    </div>
+                    <div className="">
+                        <p className="">{card.experience}</p>
+                    </div>
+                    <div>
+                        <p>{card.year}</p>
+                    </div>
+                    <div>
+
                     </div>
                     <div>
                             <button className="w-50 contact-button section-button" onClick={scrollIntoForm}>

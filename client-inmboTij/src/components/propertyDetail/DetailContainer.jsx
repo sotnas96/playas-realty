@@ -5,6 +5,10 @@ import { MdDelete } from "react-icons/md";
 import { FaRegEdit } from "react-icons/fa";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { IoBed } from "react-icons/io5";
+import { RiErrorWarningFill } from "react-icons/ri";
+import { GiBathtub } from "react-icons/gi";
+import { FaCar } from "react-icons/fa";
 import { deletePropertyAsync, getPropertiesAsync, selectPropertyById } from "../../store/properties";
 import ImageGallery from "react-image-gallery";
 import { useEffect, useRef, useState } from "react";
@@ -47,22 +51,26 @@ const DetailContainer = () => {
         if (!property) dispatch(getPropertiesAsync())
         
     }, [id, property])
-    
     if (!property) return <Loading/>
     return (
 
                 <div className="detailContainer">
                     {/* sub banner */}
                     <div className="w-100 bg-black text-white">
-                        <div className="text-start p-4 d-flex justify-content-between m-auto" style={{width:'80%'}}>
+                        <div className="main-descriptions" style={{width:'80%'}}>
                             
-                            <div>
+                            <div className="home-name">
                                 <p className="fs-2 fw-semibold my-1">{property.property}</p>
-                                <p>{property.address}</p>
                             </div>
-                            <div className="text-end">
-                                <p className="fs-2 fw-semibold my-1">{property.currency} {property.price}</p>
-                                <p>{property.sqrft}m2</p>
+                            <div>
+                                <p className="fs-2 fw-semibold my-1">{property.currency} {property.price.toLocaleString("de-DE")}</p>
+
+                            </div>
+                            <div>
+                                <p className="fs-5 fw-lighter">{property.address}</p>
+                            </div>
+                            <div className="">
+                                <p className="fs-5">{parseInt(property.sqrft).toLocaleString('de-DE')} m2</p>
                             </div>
                         </div>
                     </div>
@@ -99,15 +107,22 @@ const DetailContainer = () => {
                                     <div className="text-start p-4 fw-bold fs-5">
                                         <p>Detalles</p>
                                     </div>
-                                    <div className="d-flex justify-content-between border-top">
+                                    <div className="d-flex justify-content-between border-top fs-5">
                                         <div className=" border-end detail-box">
-                                            <p className="m-0">bed {property.beds}</p>
+                                            <p className="m-0">
+                                            <span className=""><IoBed /> </span>
+                                                {property.beds}
+                                            </p>
                                         </div>
                                         <div  className="border-end detail-box">
-                                            <p className="m-0">bath#{property.baths}</p>
+                                            <p className="m-0">
+                                            <span><GiBathtub/> </span>
+                                                {property.baths}</p>
                                         </div>
                                         <div  className="border-end detail-box">
-                                            <p className="m-0">year {property.year}</p>
+                                            <p className="m-0">
+                                            <span><FaCar /> </span>
+                                                {property.parking}</p>
                                         </div>
                                         <div  className="border-end detail-box">
                                             <p className="m-0">#</p>
@@ -131,28 +146,19 @@ const DetailContainer = () => {
                                     <div className="text-start p-4 fw-bold fs-5">
                                         <p >Dispone de </p>
                                     </div>
-                                    <div className="d-flex justify-content-between border-top p-4 flex-wrap" style={{gap:'4vh 1px'}}>
+                                    <div className="d-flex justify-content-between border-top p-4 flex-wrap fs-5" style={{gap:'4vh 1px'}}>
                                         {utilities.length > 0 && 
                                             utilities.map((element, index) => (
-                                                <div  className="text-start w-33" key={index}>
-                                                    <span><FaCheckCircle style={{color:'#ffac12'}} /></span>
+                                                <div  className=" w-33" key={index}>
                                                     <p className="d-inline m-2">{element}</p>
+                                                    <span className="text-success"><FaCheckCircle /></span>
                                                 </div>
                                             ))
                                         }
-                                        {
-                                            property.pets && 
-                                            <div  className="text-start w-33" >
-                                                    <span><FaCheckCircle style={{color:'#ffac12'}} /></span>
-                                                    <p className="d-inline m-2">pet friendly</p>
+                                            <div  className=" w-33" >
+                                                    
+                                                    <p className="d-inline m-2">pets {property.pets ? (<span className="text-success"><FaCheckCircle /></span>) : (<span className="text-danger fw-bold fs-4"><RiErrorWarningFill/></span>)}</p>
                                             </div>
-                                        }
-                                        {
-                                            <div  className="text-start w-33" >
-                                                <span><FaCheckCircle style={{color:'#ffac12'}} /></span>
-                                                <p className="d-inline m-2">parking: {property.parking}</p>
-                                            </div>
-                                        }
 
                                     </div>
                                 </div>
