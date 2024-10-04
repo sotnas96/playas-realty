@@ -13,7 +13,7 @@ const propertyData = {
     beds:'',
     baths:'',
     parking:'',
-    pets:'',
+    pets: true,
     category:'',
     type:'',
     available:'',
@@ -36,7 +36,7 @@ const CreateProperty = (props) => {
     const [imageFiles, setImageFiles] = useState([]);
     const [loadingProperty, setLoadingProperty] = useState(false);
     const [successMsg, setSuccessMsg] = useState(false);
-    const concurrentLimit = 10;
+    const concurrentLimit = 2;
 
     const handleInput = event => {
         setProperty({...property, [event.target.name]: event.target.value})
@@ -70,13 +70,13 @@ const CreateProperty = (props) => {
         event.preventDefault();
         let errorExist = false
         errorDisplay.current.innerHTML =  `<p className=""><p/>`;
-        Object.entries(property).forEach(([key, value]) => {
-            if(!value){
-                setLoadingProperty(false)
-                errorDisplay.current.innerHTML = `<p>Please complete the empty fields</p>`;
-                errorExist = true
-            }
-        });
+        // Object.entries(property).forEach(([key, value]) => {
+        //     if(!value){
+        //         setLoadingProperty(false)
+        //         errorDisplay.current.innerHTML = `<p>Please complete the empty fields</p>`;
+        //         errorExist = true
+        //     }
+        // });
         if (property.houseImg.length == 0 ) errorDisplay.current.innerHTML = `<p>Please upload images</p>`;
         if (errorExist) return 
         setProperty({...propertyData});
@@ -87,6 +87,7 @@ const CreateProperty = (props) => {
             }
             let propertyId = null;
             const uploadImageBatch = async (imageBatch, batchNumber) => {
+                
                 const batchFormData = new FormData();
                 for (const [key, value] of formData.entries()){
                     batchFormData.append(key, value);
@@ -96,6 +97,7 @@ const CreateProperty = (props) => {
                     batchFormData.append('houseImg', file);
                 })
                 const response = await dispatch(createPropertyAsync({property: batchFormData, token}))
+                console.log(`Bache: ${batchNumber} of ${amountOfBatches}`)
                 if (batchNumber === amountOfBatches) dispatch(uploadNewProperty(response.payload.data))
                 propertyId = (response.payload?.data?._id) || null;
                 
@@ -177,33 +179,44 @@ const CreateProperty = (props) => {
                             <input name="year" type="text" className="form-control" aria-label="Amount (to the nearest dollar)" onChange={handleInput}/>
                         </div>
                     </div> */}
-                    <div className="col-md-4">
-                        <label for="inputCity" className="form-label">Habitaciones</label>
-                        <input name="beds" min='1' type="number" className="form-control" id="inputCity" onChange={handleInput}/>
-                    </div>
-                    <div className="col-md-4">
-                        <label for="inputState" className="form-label">Baños</label>
-                        <input name="baths" min='1' type="number" className="form-control" id="inputState" onChange={handleInput}/>
-                        
-                    </div>
-                    <div className='col-md-4'>
-                        <label htmlFor="" className="form-label">N° Carros</label>
-                        <input name="parking" min='1' type="number" className="form-control" id="inputState" onChange={handleInput}/>
-                        {/* <select name="parking" className="form-select" aria-label="Default select example" onChange={handleInput}>
-                            <option value=""selected disable>Choose..</option>
-                            <option value="indoor">Indoor</option>
-                            <option value="outdoor">Outdoor</option>
-                        </select> */}
-                    </div>
+                    {
                     
-                    <div className='col-md-4'>
-                        <label htmlFor="" className="form-label">Mascotas</label>
-                        <select name="pets" className="form-select" aria-label="Default select example" onChange={handleInput}>
-                            <option value="" selected disabled>Elige..</option>
-                            <option value="true">SI</option>
-                            <option value="false">NO</option>
-                        </select>
+                         property.type !== 'terreno' && (
+                    <div className="row">
+
+                            <div className="col-md-4">
+                                <label for="inputCity" className="form-label">Habitaciones</label>
+                                <input name="beds" min='1' type="number" className="form-control" id="inputCity" onChange={handleInput}/>
+                            </div>
+                            <div className="col-md-4">
+                                <label for="inputState" className="form-label">Baños</label>
+                                <input name="baths" min='1' type="number" className="form-control" id="inputState" onChange={handleInput}/>
+                                
+                            </div>
+                            <div className='col-md-4'>
+                                <label htmlFor="" className="form-label">N° Carros</label>
+                                <input name="parking" min='1' type="number" className="form-control" id="inputState" onChange={handleInput}/>
+                                {/* <select name="parking" className="form-select" aria-label="Default select example" onChange={handleInput}>
+                                    <option value=""selected disable>Choose..</option>
+                                    <option value="indoor">Indoor</option>
+                                    <option value="outdoor">Outdoor</option>
+                                </select> */}
+                            </div>
+                            
+                            <div className='col-md-4'>
+                                <label htmlFor="" className="form-label">Mascotas</label>
+                                <select name="pets" className="form-select" aria-label="Default select example" onChange={handleInput}>
+                                    <option value="" selected disabled>Elige..</option>
+                                    <option value="true">SI</option>
+                                    <option value="false">NO</option>
+                                </select>
+                            </div>
                     </div>
+
+                         )
+                    
+                    }
+
                     <div className='col-md-4'>
                         <label htmlFor="" className="form-label">Categoria</label>
                         <select name="category" className="form-select" aria-label="Default select example" onChange={handleInput}>

@@ -48,7 +48,7 @@ const AdminPanel = () => {
                 </div>
 
             </div>
-            <div className="w-100">
+            <div className="w-100 ">
                 <Routes>
                     <Route path="/" element={<Navigate to="properties" />} />
                     <Route path="properties/*" element={<PropertiesPanel/>}/>

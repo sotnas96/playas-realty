@@ -12,13 +12,13 @@ const initialState = {
 export const createPropertyAsync = createAsyncThunk("admin/create", async ({property, token}) => {
     try {
 
-        const createProperty = await axios.post(`${url}/admin/create`, property, {
+        const response = await axios.post(`${url}/admin/create`, property, {
             headers: {
                 Authorization: token,
                 'Content-Type':'multipart/form-data'
             }
         })
-        return createProperty.data
+        return response.data
     } catch (error) {
         return error.response.data
     }   
@@ -71,6 +71,10 @@ const propertiesSlice = createSlice({
             .addCase(createPropertyAsync.fulfilled, (state, action) => {
                 // state.properties.push(action.payload.data)
                 state.creationLoading = true
+            })
+            .addCase(createPropertyAsync.rejected, (state, action) => {
+                // state.properties.push(action.payload.data)
+                state.creationLoading = false
             })
             .addCase(getPropertiesAsync.fulfilled, (state, action) => {
                 state.loading = false;
