@@ -11,11 +11,8 @@ const cardContainer = ({ filter }) => {
             return properties
         };
         return properties.filter(element => {
-            console.log(element.type, element.category, 'desde filter')
             const matchedType = type ? element.type == type : true;
             const matchedCat = category ? element.category == category : true;
-            
-    
             return matchedCat && matchedType;
         })
     }

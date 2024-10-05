@@ -10,7 +10,6 @@ import { RiErrorWarningFill } from "react-icons/ri";
 import { GiBathtub } from "react-icons/gi";
 import { FaCar } from "react-icons/fa";
 import { deletePropertyAsync, getPropertiesAsync, selectPropertyById } from "../../store/properties";
-import ImageGallery from "react-image-gallery";
 import { useEffect, useRef, useState } from "react";
 import Form from "../formContainer/Form";
 import Loading from "../Loading/Loading";
@@ -19,7 +18,6 @@ const DetailContainer = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch();
     const token = localStorage.getItem('token');
-
     const { id } = useParams();
     const { isAuth } = useSelector(state => state.auth)
     const [authdelete, setauthDelete] = useState(false);
@@ -53,16 +51,17 @@ const DetailContainer = () => {
     }, [id, property])
     if (!property) return <Loading/>
     return (
+        
+           
 
                 <div className="detailContainer">
-                    {/* sub banner */}
                     <div className="w-100 bg-black text-white">
-                        <div className="main-descriptions" style={{width:'80%'}}>
+                        <div className="main-descriptions">
                             
                             <div className="home-name">
                                 <p className="fs-2 fw-semibold my-1">{property.property}</p>
                             </div>
-                            <div>
+                            <div className="">
                                 <p className="fs-2 fw-semibold my-1">{property.currency} {property.price.toLocaleString("de-DE")}</p>
 
                             </div>
@@ -97,11 +96,29 @@ const DetailContainer = () => {
                                 </div>
                             </div>       
                         }
-                        <div className="p-4 main-page">
+                        <div className="p-md-4 main-page">
                             {/* Main descriptions */}
                             <div className="detail-main">
                                 <div className="border image-gallery-container">
-                                    <ImageGallery items={images} showNav={false} showThumbnails={false}/>
+                                    <div className="">
+                                        <div id="carouselExample" className="carousel slide">
+                                            <div className="carousel-inner">
+                                                { property.images.map((element, index) => (
+                                                    <div className={`carousel-item ${index == 0 ? ('active') : ('')}`} key={index}>
+                                                        <img src={element} className="img-carousel" alt="..."/>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                            <button className="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                                                <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                <span className="visually-hidden">Previous</span>
+                                            </button>
+                                            <button className="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                                                <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                                                <span className="visually-hidden">Next</span>
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div className=" bg-white d-flex flex-column rounded-4">
                                     <div className="text-start p-4 fw-bold fs-5">
@@ -190,6 +207,6 @@ const DetailContainer = () => {
                         </div>
                     </div>
                 </div>
-    )
+            )
 };
 export default DetailContainer;
