@@ -31,6 +31,7 @@
     text-align: start;
     padding: 1.5rem;
     flex-wrap: wrap;
+    width: 80%;
 }
 
 .home-name{
@@ -52,17 +53,14 @@
     width: 80%;
 }
 .image-gallery-container{
-    max-width: 800px; /* Adjust as needed */
-    max-height: 500px; /* Adjust the height */
-    overflow: hidden;
-    margin: 0 auto; 
-    margin: auto;
-}
-.image-gallery-slide img {
-    width: 100%;
-    height: auto;
     object-fit: cover;
-  }
+}
+.img-carousel {
+    width: 100%;
+    max-height: 600px;
+    height: fit-content;
+    object-fit: cover;
+}
   .crud-button{
     width: 50%;
     background-color: white;
@@ -75,6 +73,9 @@
     background-color: rgba(0,0,0,0.1);
 }
 @media (max-width: 767px) {
+    .main-descriptions {
+        width: 100%;
+    }
     .main-page{
         flex-direction: column;
         width: 95%;
