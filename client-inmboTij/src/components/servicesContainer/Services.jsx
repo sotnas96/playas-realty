@@ -16,7 +16,7 @@ const Services = () => {
                 <div className="w-100 p-2 d-flex flex-wrap justify-content-around">
                     <div className="service-card border">
                         <div className="img-container">
-                            <img src="https://asset.skoiy.com/9b80a6f781ff336f/yrwwqpnyb7ys.jpg?w=970&q=90" alt="" className="card-img"/>
+                            <img src="/images/service3.jpeg" alt="" className="card-img"/>
                         </div>
                         <div className="text-start p-3">
                             <div className="fw-semibold fs-3">
@@ -28,7 +28,7 @@ const Services = () => {
                     </div>
                     <div className="service-card border">
                         <div className="img-container">
-                            <img src="https://asset.skoiy.com/9b80a6f781ff336f/yrwwqpnyb7ys.jpg?w=970&q=90" alt="" className="card-img"/>
+                            <img src="/images/service1.jpeg" alt="" className="card-img"/>
                         </div>
                         <div className="text-start p-3">
                             <div className="fw-semibold fs-3">
@@ -40,7 +40,7 @@ const Services = () => {
                     </div>
                     <div className="service-card border">
                         <div className="img-container">
-                            <img src="https://asset.skoiy.com/9b80a6f781ff336f/yrwwqpnyb7ys.jpg?w=970&q=90" alt="" className="card-img"/>
+                            <img src="/images/service2.jpeg" alt="" className="card-img"/>
                         </div>
                         <div className="text-start p-3">
                             <div className="fw-semibold fs-3">

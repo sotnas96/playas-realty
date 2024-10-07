@@ -3,9 +3,16 @@ import "./card.css";
 import { getLoadingState, getProperties, getPropertiesAsync } from "../../store/properties";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
 
 const cardContainer = ({ filter }) => {
+    const path = useLocation();
+    const isDetailPage = path.pathname.includes('detail')
     const token = localStorage.getItem('token')
+    const [showMore, setShowMore] = useState(5);
+    const showMoreProperties = () => {
+        setShowMore(prevShowMore => prevShowMore + 5);
+    }
     const filterProperties = (properties, type, category) => {
         if (!type && !category ) {
             return properties
@@ -29,11 +36,11 @@ const cardContainer = ({ filter }) => {
     }, [filter, properties])
     return (
         <div className="w-100 my-2 py-2">
-            <div className="cardContainer">
+            <div className={`${isDetailPage ? ('cardContainer2') : ('cardContainer')}`}>
             {
                 filterProp.length > 0 ?
             
-                 ( filterProp.map((property, index) => (
+                 ( filterProp.slice(0, showMore).map((property, index) => (
                     !token ? 
                     (property.available && <Card key={property._id} props={property}/>)
                      : 
@@ -45,6 +52,18 @@ const cardContainer = ({ filter }) => {
                  (<p>No properties</p>)
             }
             </div>
+            {
+                filterProp.length > showMore && 
+                (
+                    <div className="text-center">
+                        <button className="show-more" onClick={showMoreProperties}>
+                            <p className="m-0">VER MAS <span className="but">▼</span></p>
+                            
+                        </button>
+                    </div>
+                )  
+            }
+            
 
         </div>
     )

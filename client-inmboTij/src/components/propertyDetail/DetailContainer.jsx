@@ -1,5 +1,5 @@
 import "./detail.css"
-import Card from "../cardContainer/Card";
+import CardContainer from "../cardContainer/CardContainer";
 import { FaCheckCircle } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import { FaRegEdit } from "react-icons/fa";
@@ -9,11 +9,15 @@ import { IoBed } from "react-icons/io5";
 import { RiErrorWarningFill } from "react-icons/ri";
 import { GiBathtub } from "react-icons/gi";
 import { FaCar } from "react-icons/fa";
-import { deletePropertyAsync, getPropertiesAsync, selectPropertyById } from "../../store/properties";
+import { deletePropertyAsync, selectPropertyById } from "../../store/properties";
 import { useEffect, useRef, useState } from "react";
 import Form from "../formContainer/Form";
 import Loading from "../Loading/Loading";
 
+const filterProps = {
+    category: '',
+    type: '',
+}
 const DetailContainer = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch();
@@ -21,14 +25,10 @@ const DetailContainer = () => {
     const { id } = useParams();
     const { isAuth } = useSelector(state => state.auth)
     const [authdelete, setauthDelete] = useState(false);
-    const [confirmDelete, setConfirmDelete] = useState(false)
+    const [confirmDelete, setConfirmDelete] = useState(false);
+    const [filter, setFilter] = useState(filterProps)
     const property = useSelector(state => selectPropertyById(state, id));
     let utilities = property ? property.utilities[0].split(',') : [];
-    const images = property? property.images.map(element => {
-        return {original: element,
-                thumbnail: element
-        }
-    }) : [];
     const deleteProperty = () => {
         setauthDelete(true)
     }
@@ -44,16 +44,11 @@ const DetailContainer = () => {
     const cancelDeletion = () => {
         setauthDelete(false)
     }
-    useEffect(()=> {
-
-        if (!property) dispatch(getPropertiesAsync())
-        
-    }, [id, property])
+    useEffect(() => {
+        setFilter({category:property.category, type:property.type})
+    }, [])
     if (!property) return <Loading/>
     return (
-        
-           
-
                 <div className="detailContainer">
                     <div className="w-100 bg-black text-white">
                         <div className="main-descriptions">
@@ -109,11 +104,11 @@ const DetailContainer = () => {
                                                     </div>
                                                 ))}
                                             </div>
-                                            <button className="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                                            <button className="carousel-control-prev " type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
                                                 <span className="carousel-control-prev-icon" aria-hidden="true"></span>
                                                 <span className="visually-hidden">Previous</span>
                                             </button>
-                                            <button className="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                                            <button className="carousel-control-next " type="button" data-bs-target="#carouselExample" data-bs-slide="next">
                                                 <span className="carousel-control-next-icon" aria-hidden="true"></span>
                                                 <span className="visually-hidden">Next</span>
                                             </button>
@@ -154,7 +149,7 @@ const DetailContainer = () => {
                                         <p >Descripcion</p>
                                     </div>
                                     <div className="d-flex justify-content-between border-top">
-                                        <div  className="p-4 text-start">
+                                        <div  className="p-4 text-start description-info">
                                             <p className="m-0">{property.description}</p>
                                         </div>
                                     </div>
@@ -166,7 +161,7 @@ const DetailContainer = () => {
                                     <div className="d-flex justify-content-between border-top p-4 flex-wrap fs-5" style={{gap:'4vh 1px'}}>
                                         {utilities.length > 0 && 
                                             utilities.map((element, index) => (
-                                                <div  className=" w-33" key={index}>
+                                                <div  className="w-33" key={index}>
                                                     <p className="d-inline m-2">{element}</p>
                                                     <span className="text-success"><FaCheckCircle /></span>
                                                 </div>
@@ -174,7 +169,8 @@ const DetailContainer = () => {
                                         }
                                             <div  className=" w-33" >
                                                     
-                                                    <p className="d-inline m-2">pets {property.pets ? (<span className="text-success"><FaCheckCircle /></span>) : (<span className="text-danger fw-bold fs-4"><RiErrorWarningFill/></span>)}</p>
+                                                    <p className="d-inline m-2">pets</p>
+                                                    {property.pets ? (<span className="text-success"><FaCheckCircle /></span>) : (<span className="text-danger fw-bold fs-4"><RiErrorWarningFill/></span>)}
                                             </div>
 
                                     </div>
@@ -198,10 +194,10 @@ const DetailContainer = () => {
                                 </div>
                             </div>
                             <div className="text-md-start text-center">
-                                <p className='fw-semibold fs-2' style={{letterSpacing:'-0.05em'}}>Similares</p>
+                                <p className='fw-semibold fs-2'>Similares</p>
                             </div>
                             <div className="card-container">                     
-                                {/* <Card/> */}
+                                <CardContainer  filter={filter}/>
                             </div>
 
                         </div>
