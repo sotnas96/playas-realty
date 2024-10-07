@@ -49,8 +49,24 @@
     border: none;
     border-radius:20px 20px 0px 0px;
 }
-
-
+.show-more {
+    border: none;
+    background-color: black;
+    color: white;
+    padding: 5px;
+    width: 150px;
+    border-radius: 5px;
+    margin: 15px 0px
+}
+.but{
+    color: #ffac12;
+}
+.cardContainer2 {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 1.5%;
+}
 @media (max-width: 767px) {
     .cardContainer{
         /* gap: 10px; */
@@ -72,6 +88,6 @@
 }
 @media (max-width: 583px) {
     .card{
-        width: 100%;
+        width: 95%   
     }
 }

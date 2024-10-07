@@ -22,7 +22,7 @@
     overflow-x: auto;
     align-items: center;
     min-height: 60vh;
-    padding: 20px;
+    
   }
 .main-descriptions {
     display: flex;
@@ -72,6 +72,11 @@
 .crud-button:hover{
     background-color: rgba(0,0,0,0.1);
 }
+.description-info{
+    white-space: pre-wrap;
+    max-height: 60vh;
+    overflow: scroll;
+}
 @media (max-width: 767px) {
     .main-descriptions {
         width: 100%;
@@ -91,5 +96,11 @@
     }
     .home-name{
         width: 100%;
+    }
+}
+@media (max-width: 583px) {
+    .w-33{
+        width: 45%;
+        text-align: end;
     }
 }

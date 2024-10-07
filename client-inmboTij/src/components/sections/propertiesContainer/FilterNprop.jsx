@@ -14,6 +14,7 @@ const FilterNprop = () => {
     const cleanFilters = () => {
         setFilter(filterProps)
     }
+    console.log(filter)
     return (
         <>
             <div className>

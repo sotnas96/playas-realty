@@ -37,7 +37,7 @@ const Header = () => {
                     <div className="">
                         {/* <img src={logo} alt="" className="logo" /> */}
                         <Link to={"/"}>
-                            <p className='m-0'>LOGO</p>
+                            <img src="/images/logo2.png" alt="" className='logo' />
                         </Link>
                     </div>
                     <div className="w-75 hide-menu">
@@ -90,7 +90,7 @@ const Header = () => {
                         </ul>
                     </div>
 
-                    <div className="d-md-none m-2">
+                    <div className="m-2 show-menu">
                         <div className="">
                             <button className="hamb-button" onClick={showSideMenu}>
                                 <GiHamburgerMenu  className="ham-icon" />

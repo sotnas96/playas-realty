@@ -15,7 +15,7 @@ const Card = ({ props }) => {
             <div className="text-start px-4">
                 <div>
                     <p className="fw-semibold fs-5 my-2">{props.property.toUpperCase()}</p>
-                    <p className="my-2">{props.type}</p>
+                    <p className="my-2">{props.address}</p>
 
                 </div>
             </div>
