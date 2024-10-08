@@ -9,9 +9,9 @@ const cardContainer = ({ filter }) => {
     const path = useLocation();
     const isDetailPage = path.pathname.includes('detail')
     const token = localStorage.getItem('token')
-    const [showMore, setShowMore] = useState(5);
+    const [showMore, setShowMore] = useState(8);
     const showMoreProperties = () => {
-        setShowMore(prevShowMore => prevShowMore + 5);
+        setShowMore(prevShowMore => prevShowMore + 4);
     }
     const filterProperties = (properties, type, category) => {
         if (!type && !category ) {

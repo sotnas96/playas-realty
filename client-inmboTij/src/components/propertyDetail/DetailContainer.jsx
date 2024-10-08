@@ -146,7 +146,7 @@ const DetailContainer = () => {
                                 </div>
                                 <div className=" bg-white d-flex flex-column rounded-4">
                                     <div className="text-start p-4 fw-bold fs-5">
-                                        <p >Descripcion</p>
+                                        <p >Descripción</p>
                                     </div>
                                     <div className="d-flex justify-content-between border-top">
                                         <div  className="p-4 text-start description-info">
