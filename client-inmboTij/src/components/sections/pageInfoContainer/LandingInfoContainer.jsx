@@ -17,10 +17,10 @@ const LandignInfoContainer = () => {
 
                                 </div>
                                 <div>
-                                    <p className='fs-1 fw-semibold' style={{letterSpacing:'-0.05em'}}>Estás en buenas manos</p>
+                                    <h2 className='fs-1 fw-semibold' style={{letterSpacing:'-0.05em'}}>Estás en buenas manos</h2>
                                 </div>
                                 <div className='w-75 mb-4'>
-                                    <p className='fw-lighter lh-sm m-0 fs-6'>Somos una agencia inmobiliaria en Tijuana con más de 20 años de experiencia en la compra-venta de propiedades y en la elaboración de proyectos inmobiliarios.</p>
+                                    <h3 className='fw-lighter lh-sm m-0 fs-6'>Somos una agencia inmobiliaria en Tijuana con más de 20 años de experiencia en la compra-venta de propiedades y en la elaboración de proyectos inmobiliarios.</h3>
                                 </div>
                                 <div className='my-4'>
                                     <button className="contact-button  section-button ">
@@ -39,10 +39,10 @@ const LandignInfoContainer = () => {
 
                                 </div>
                                 <div className='text-landing'>
-                                    <p className='fs-1 fw-semibold' style={{letterSpacing:'-0.05em'}}>20 años de experiencia</p>
+                                    <h2 className='fs-1 fw-semibold' style={{letterSpacing:'-0.05em'}}>20 años de experiencia</h2>
                                 </div>
                                 <div className='text-div mb-4 text-landing'>
-                                    <p className='fw-lighter lh-sm m-0 fs-6' >Llevando de la mano a nuestros clientes en la compra-venta de propiedades, casas, terrenos y departamentos.</p>
+                                    <h3 className='fw-lighter lh-sm m-0 fs-6' >Llevando de la mano a nuestros clientes en la compra-venta de propiedades, casas, terrenos y departamentos.</h3>
                                 </div>
                                 <div className='my-4'>
                                     <button className="contact-button section-button " onClick={scrollIntoForm}>

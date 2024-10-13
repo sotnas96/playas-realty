@@ -1,19 +1,33 @@
 .banner {
-    background-color: white;
-    position: relative;
-    z-index: 2;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
     color: white;
+    background-image: url("../../assets/images/banner.JPG");
+    width: 100%;
+    min-height: 100vh;
+    align-content: center;
+    position: relative; /* This is necessary for the pseudo-element to be positioned relative to the banner */
+    z-index: 0; /* Ensures the content stays above the background */
+}
+/* all the following properties are necessary to apply the image shadow. */
+.banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Adds the black overlay with 50% opacity */
+    z-index: -1; /* Ensures the overlay stays behind the content */
 }
 .banner-img {
     filter: brightness(0.6);
-    height: 85vh;
+    height: 600px;
     width: 100%;
     /* object-fit: cover; */
 }
 .banner-tittle {
-    position: absolute;
-    z-index: 4;
-    top: 6rem;
     text-align: start;
 }
 .contact-button {
@@ -36,6 +50,11 @@
 .p-tittle {
     width: 50%;
     font-size: 25px;
+}
+@media (max-width: 860px) {
+    .banner{
+        background-size: cover;
+    }
 }
 @media (max-width: 1000px) {
     .h1-tittle {

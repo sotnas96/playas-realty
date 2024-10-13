@@ -27,7 +27,7 @@ const DetailContainer = () => {
     const [authdelete, setauthDelete] = useState(false);
     const [confirmDelete, setConfirmDelete] = useState(false);
     const [filter, setFilter] = useState(filterProps)
-    const property = useSelector(state => selectPropertyById(state, id));
+    const property = useSelector(state => state.properties.test[id]);
     let utilities = property ? property.utilities[0].split(',') : [];
     const deleteProperty = () => {
         setauthDelete(true)
@@ -54,14 +54,14 @@ const DetailContainer = () => {
                         <div className="main-descriptions">
                             
                             <div className="home-name">
-                                <p className="fs-2 fw-semibold my-1">{property.property}</p>
+                                <h2 className="fs-2 fw-semibold my-1">{property.property}</h2>
                             </div>
                             <div className="">
                                 <p className="fs-2 fw-semibold my-1">{property.currency} {property.price.toLocaleString("de-DE")}</p>
 
                             </div>
                             <div className="home-name">
-                                <p className="fs-5 fw-lighter">{property.address}</p>
+                                <h3 className="fs-5 fw-lighter">{property.address}</h3>
                             </div>
                             <div className="">
                                 <p className="fs-5">{parseInt(property.sqrft).toLocaleString('de-DE')} m2</p>

@@ -7,7 +7,7 @@ const Services = () => {
 
                 </div>
                 <div className="">
-                    <p className="fs-3 fw-semibold">20 años de <span className="text-decoration-underline" style={{color:'#ffac12'}}>experiencia</span></p>
+                    <h2 className="fs-3 fw-semibold">20 años de <span className="text-decoration-underline" style={{color:'#ffac12'}}>experiencia</span></h2>
                 </div>
                 <div className="logo-service-md m-auto">
                 </div>
@@ -20,7 +20,7 @@ const Services = () => {
                         </div>
                         <div className="text-start p-3">
                             <div className="fw-semibold fs-3">
-                                <p>Compra-venta</p>
+                                <h3>Compra-venta</h3>
                             </div>
                             <div className="fw-lighter">
                             </div>
@@ -32,7 +32,7 @@ const Services = () => {
                         </div>
                         <div className="text-start p-3">
                             <div className="fw-semibold fs-3">
-                                <p>Alquiler</p>
+                                <h3>Alquiler</h3>
                             </div>
                             <div className="fw-lighter">
                             </div>
@@ -44,7 +44,7 @@ const Services = () => {
                         </div>
                         <div className="text-start p-3">
                             <div className="fw-semibold fs-3">
-                                <p>Administración de propiedades</p>
+                                <h3>Administración de propiedades</h3>
                             </div>
                             <div className="fw-lighter">
                             </div>
