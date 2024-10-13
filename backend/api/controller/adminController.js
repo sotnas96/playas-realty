@@ -3,29 +3,35 @@ const { Property, Contact } = require("../dbconfig");
 const uploadFileToFirebase = require("../utils/uploadFileFirebase");
 const adminController = {
     createProperty: async (req, res) => {
-        //validar?
-        if (!req.files) {
-            return res.status(400).json({success:false, error: 'please upload images'})
-        }
-        const imgsUrls = await uploadFileToFirebase(req.files,  req.body.type, req.body.property);
-
         const errors = validationResult(req);
         if (! errors.isEmpty()) {
-            return res.status(400).json(errors.array());
+            return res.status(400).json({success: false, errors:errors.array()});
         }
         try {    
-            const property = req.body?.id ?  await Property.findByIdAndUpdate({_id: req.body.id},{$push: { images: { $each: imgsUrls}} }, { new: true} )
-                                             : 
-                                            await Property.create({...req.body, images: imgsUrls});
+            const property = await Property.create({...req.body});
             return res.json({success:true, data: property})
         } catch(error) {
             res.status(400).json({success: false, error: error.message})
         }
     },
+    uploadImages: async (req, res) => {
+        const{id, type, property }= JSON.parse(req.body.info);
+
+        if (!req.files) {
+            return res.status(400).json({success:false, message:'Please upload at least 1 images'})
+        }
+        try {
+            const imgsUrls = await uploadFileToFirebase(req.files,  type, property);
+            const updateProp = await Property.findByIdAndUpdate({_id: id},{$push: { images: { $each: imgsUrls}} }, { new: true} )
+            if (!updateProp) throw new Error('Hubo un error al crear la imagen porfavor intente nuevamente')
+            return res.status(200).json({success: true, data: updateProp})
+        } catch(error){
+            res.status(400).json({success: false, message:error.message})
+        }
+    },
     editProperty: async (req, res) => {
         let editedProperty = {...req.body}
         if (req.files.length) {
-            console.log('existe files')
             const imgsUrls = await uploadFileToFirebase(req.files);
             editedProperty = {...editedProperty, images: imgsUrls}
         }

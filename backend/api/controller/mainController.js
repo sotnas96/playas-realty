@@ -11,7 +11,11 @@ const mainController = {
     },
     allHomes: async (req, res) => {
         const properties = await Property.find();
-        res.status(200).json({success:true, data: properties})
+        const hashMap = {}
+        properties.forEach( e => {
+            hashMap[e._id] = e;
+        })
+        res.status(200).json({success:true, data: properties, hashMap:hashMap})
     },
     contact: async (req, res) => {
         const userContact = { ...req.body}
@@ -34,6 +38,11 @@ const mainController = {
     getUserInqueries: async (req, res) => {
         const inqueries = await Contact.find();
         res.status(200).json({success:true, data: inqueries})
+    },
+    testing: async (req, res) => {
+        const properties = await Property.find();
+
+        return res.status(200).json({success:true, msg:hashMap})
     }
 };
 module.exports = mainController;
