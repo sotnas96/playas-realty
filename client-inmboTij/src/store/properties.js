@@ -1,8 +1,8 @@
 import { createAsyncThunk, createSelector, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-// const url = import.meta.env.VITE_API_BACK_URL;
-const url = 'http://localhost:4000/api';
+const url = import.meta.env.VITE_API_BACK_URL;
+// const url = 'http://localhost:4000/api';
 const initialState = {
     // properties: []
     test:{},
