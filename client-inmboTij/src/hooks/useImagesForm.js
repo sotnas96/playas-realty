@@ -15,7 +15,8 @@ const useImagesForm = (propertyId) => {
     const [loadingUpload, setLoadingUpload] = useState(false);
     const concurrentLimit = 5;
     useEffect (()=> {
-        setAmountofBatches(Math.ceil(imageFiles.length / concurrentLimit))
+        // setAmountofBatches(Math.ceil(imageFiles.length / concurrentLimit))
+        setAmountofBatches(imageFiles.length)
     }, [imageFiles])
     const handleImgInput = (e) => {
         const files = Array.from(e.target.files);
@@ -34,18 +35,22 @@ const useImagesForm = (propertyId) => {
             imageBatch.forEach(file => {
                 batchFormData.append('houseImg', file);
             })
-            const response = await dispatch(uploadImagesAsync({imagesInfo: batchFormData, token}))
+            await dispatch(uploadImagesAsync({imagesInfo: batchFormData, token}))
             console.log(`Bache: ${batchNumber} of ${amountOfBatches}`)
 
         };
-        const imageBatches = [];
-        for (let i=0; i < imageFiles.length; i+= concurrentLimit){
-            imageBatches.push(imageFiles.slice(i, i+ concurrentLimit));
-        }
-        for (let i = 0; i < imageBatches.length; i++){
-            await uploadImageBatch(imageBatches[i], i+1);
+        for (let i = 0; imageFiles.length; i++){
+            await uploadImageBatch(imageFiles[i], i+1);
             setProgress((((i+1)/amountOfBatches)*100).toPrecision(3));
-        }   
+        }
+        // const imageBatches = [];
+        // for (let i=0; i < imageFiles.length; i+= concurrentLimit){
+        //     imageBatches.push(imageFiles.slice(i, i+ concurrentLimit));
+        // }
+        // for (let i = 0; i < imageBatches.length; i++){
+        //     await uploadImageBatch(imageBatches[i], i+1);
+        //     setProgress((((i+1)/amountOfBatches)*100).toPrecision(3));
+        // }  
         setIsSuccessfull(true);
         setTimeout(() => {
             navigate('/admin/properties/all')    
