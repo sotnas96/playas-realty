@@ -9,15 +9,16 @@ const cardContainer = ({ filter }) => {
     const path = useLocation();
     const isDetailPage = path.pathname.includes('detail')
     const token = localStorage.getItem('token')
-    const [showMore, setShowMore] = useState(5);
+    const [showMore, setShowMore] = useState(8);
     const showMoreProperties = () => {
-        setShowMore(prevShowMore => prevShowMore + 5);
+        setShowMore(prevShowMore => prevShowMore + 4);
     }
     const filterProperties = (properties, type, category) => {
+        const propertiesArray = Object.values(properties);
         if (!type && !category ) {
-            return properties
+            return propertiesArray
         };
-        return properties.filter(element => {
+        return propertiesArray.filter(element => {
             const matchedType = type ? element.type == type : true;
             const matchedCat = category ? element.category == category : true;
             return matchedCat && matchedType;
@@ -26,14 +27,14 @@ const cardContainer = ({ filter }) => {
     const {type, category} = filter
     const dispatch = useDispatch();
     const [filterProp , setFilterProp] = useState([])
-    const { properties, hasFetched}= useSelector(state => state.properties);
+    const {hasFetched, test }= useSelector(state => state.properties);
     useEffect(()=> {
         if (!hasFetched) dispatch(getPropertiesAsync());
     }, [dispatch, hasFetched]);
     useEffect(()=> {
-        setFilterProp(filterProperties(properties, type, category));
+        setFilterProp(filterProperties(test, type, category));
 
-    }, [filter, properties])
+    }, [filter, test])
     return (
         <div className="w-100 my-2 py-2">
             <div className={`${isDetailPage ? ('cardContainer2') : ('cardContainer')}`}>

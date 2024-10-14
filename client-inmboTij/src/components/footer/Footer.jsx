@@ -1,7 +1,7 @@
 import "./footer.css"
-import { FaFacebook } from "react-icons/fa";
 import { FaFacebookF } from "react-icons/fa6";
 import { Link } from "react-router-dom";
+import logo from "../../assets/images/logo2.png"
 const Footer = () => {
     return (
         <div className="p-4">
@@ -11,8 +11,10 @@ const Footer = () => {
             <div className="p-2  footer text-start container">
                 <div className="row">
                     <div className="col-4">
-                        <p className="text-white fw-light">LOGO IPSUM</p>
-                        <FaFacebookF />
+                        <img src={logo} alt="" className='logo-footer' />
+                        <p>
+                            <FaFacebookF />
+                        </p>
                     </div>
                     <div className="col-8">
                         <ul className="d-flex list-footer ">
@@ -22,7 +24,7 @@ const Footer = () => {
                             <Link to={"/properties"} >
                                 <li>Propiedades</li>
                             </Link>
-                            <Link to={"/aboutUs"} >
+                            <Link to={"/sobreNosotros"} >
                                 <li>Contactos</li>
                             </Link>       
                         </ul>

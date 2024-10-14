@@ -9,7 +9,7 @@ const PropertiesContainer = () => {
                         </div>
                     </div>
                     <div className=''>
-                        <p className='fw-semibold fs-2' style={{letterSpacing:'-0.05em'}}>Encuentra tu próximo lugar para vivir</p>
+                        <h2 className='fw-semibold fs-2'>Encuentra tu próximo lugar para vivir</h2>
                     </div>
                     <FilterNprop/>
                 </div>

@@ -25,9 +25,9 @@ const PropertiesPanel = () => {
             <Routes>
                 <Route path="/" element={<Navigate to='all'/>}/>
                 <Route path="all" element={<AdminProperties/>}/>
-                <Route path="create" element={<CreateProperty isNew={true}/>} />
-                <Route path="edit/:id" element={<EditProperty isNew={false}/>}/>
-                <Route path="edit"  />
+                <Route path="create" element={<CreateProperty />} />
+                <Route path="edit/:id" element={<EditProperty/>}/>
+                <Route path="edit" />
             </Routes>
         </div>
     )

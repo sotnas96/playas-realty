@@ -2,7 +2,6 @@ import { FaArrowRightLong } from "react-icons/fa6";
 import "./contact.css"
 import scrollIntoForm from "../scrollIntoForm/scrollIntoForm";
 const ContactCard = ({card}) => {
-    console.log(card)
     return (
         <div className="contact-card my-4">
             <div className="contact-img-container">
@@ -14,10 +13,10 @@ const ContactCard = ({card}) => {
 
                     </div>
                     <div>
-                        <p className="fw-bolder fs-4">{card.name}</p>
+                        <h2 className="fw-bolder fs-4">{card.name}</h2>
                     </div>
                     <div>
-                        <p className="fs-5 fw-semibold">{card.role}</p>
+                        <h3 className="fs-5 fw-semibold">{card.role}</h3>
                         <p className="fs-6 fw-bold">{card.phoneNumber}</p>
                     </div>
                     <div className="">
