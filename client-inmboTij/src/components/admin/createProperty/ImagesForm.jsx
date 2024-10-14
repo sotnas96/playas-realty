@@ -17,7 +17,7 @@ const ImagesForm = ({houseImages, imgError, handleImgInput, handleImagesForm}) =
                         {
                             imgError && 
                             <div className='text-danger'>
-                                <p className="my-2 ">Porfavor, cargue al menos 1 imagen</p>
+                                <p className="my-2 ">Porfavor, cargue al menos 1 imagen y no mas de 40</p>
                             </div>
                         }
                     </div>

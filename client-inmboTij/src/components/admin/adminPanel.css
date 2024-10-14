@@ -35,3 +35,8 @@
     max-height: 60vh;
     overflow-y: scroll;
 }
+.loading-bar{
+    width: 33%;
+    background-color: green;
+    height: 30px;
+}

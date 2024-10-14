@@ -26,20 +26,24 @@ const useImagesForm = (propertyId) => {
         setImgError(false)
     } 
     const handleImagesForm = async(e) => {
-        setLoadingUpload(true);
         e.preventDefault();
-        if (imageFiles.length == 0) return setImgError(true)
+        // return 
+        console.log(imageFiles.length)
+        if (imageFiles.length == 0 || imageFiles.length > 40) return setImgError(true)
+        setLoadingUpload(true);
         const uploadImageBatch = async (imageBatch, batchNumber) => {
             const batchFormData = new FormData();
             batchFormData.append('info', JSON.stringify(propertyId));
-            imageBatch.forEach(file => {
-                batchFormData.append('houseImg', file);
-            })
+            batchFormData.append('houseImg', imageBatch);
+
+            // imageBatch.forEach(file => {
+            //     batchFormData.append('houseImg', file);
+            // })
             await dispatch(uploadImagesAsync({imagesInfo: batchFormData, token}))
             console.log(`Bache: ${batchNumber} of ${amountOfBatches}`)
 
         };
-        for (let i = 0; imageFiles.length; i++){
+        for (let i = 0; i < imageFiles.length; i++){
             await uploadImageBatch(imageFiles[i], i+1);
             setProgress((((i+1)/amountOfBatches)*100).toPrecision(3));
         }

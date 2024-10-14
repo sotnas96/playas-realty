@@ -6,13 +6,15 @@ const uploadFileToFirebase = (files, type, houseName ) => {
         let fileBuffer = file.buffer
         //file trae: fieldname, originalname, encoding, mimetype, buffer, size
         const { format }= await sharp(file.buffer).metadata();
+        let mimetype = file.mimetype;
         //metadata trae format, size, width, height, space, channels, etc.
         if (format == 'heif' || format == 'heic'){
             fileBuffer = await heicConvert({
                 buffer: fileBuffer,
                 format: 'JPEG',
-                quality: 1
+                quality: 0.8
             });
+            mimetype = 'image/jpeg';
         }
         return sharp(fileBuffer)
                 .resize(1024, 1024)
@@ -24,7 +26,7 @@ const uploadFileToFirebase = (files, type, houseName ) => {
                         const blobStream = blob.createWriteStream({
                             resumable: true, // Enable resumable uploads
                             metadata: {
-                                contentType: file.mimetype,
+                                contentType: mimetype,
                             },
                         });
 
