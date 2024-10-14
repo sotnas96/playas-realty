@@ -55,8 +55,9 @@ const CreateProperty = (props) => {
                         (<p className="text-success fw-bold my-2">Property loaded!</p>)
                       : 
                         (<div>
-                            <p className="m-2">Cargando imagenes porfavor espere... {progress}</p>
-                            {/* <p className="fs-3 fw-bold">{progress}%</p> */}
+                            <p className="m-2">Cargando imagenes porfavor espere... </p>
+                            {/* <p></p> */}
+                            <p className="fs-3 fw-bold">{progress}%</p>
                         </div>
                         )
                      }
