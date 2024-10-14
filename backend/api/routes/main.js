@@ -7,6 +7,8 @@ const loginValid = require("../utils/loginValidation");
 const contactValid = require("../validations/contactValidation");
 
 mainRouter.get("/", mainController.allHomes);
+mainRouter.get("/hashmap", mainController.testing);
+
 
 mainRouter.get("/inqueries", adminAuth, mainController.getUserInqueries)
 mainRouter.post("/contact", contactValid, mainController.contact)
