@@ -4,6 +4,7 @@ import FormProperty from "./FormProperty";
 import usePropertyForm from "../../../hooks/usePropertyForm";
 import ImagesForm from "./ImagesForm";
 import useImagesForm from "../../../hooks/useImagesForm";
+import { WiDayThunderstorm } from "react-icons/wi";
 const propertyData = {
     property: '',
     address:'',
@@ -58,6 +59,11 @@ const CreateProperty = (props) => {
                             <p className="m-2">Cargando imagenes porfavor espere... </p>
                             {/* <p></p> */}
                             <p className="fs-3 fw-bold">{progress}%</p>
+                            <div className="w-25 m-auto border my-2" >
+                                <div className="loading-bar" style={{width:`${progress}%`}}>
+
+                                </div>
+                            </div>
                         </div>
                         )
                      }
