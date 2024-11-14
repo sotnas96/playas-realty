@@ -5,7 +5,7 @@ const ContactCard = ({card}) => {
     return (
         <div className="contact-card my-4">
             <div className="contact-img-container">
-                    <img className='contact-img' src="https://www.zillowstatic.com/bedrock/app/uploads/sites/47/how-to-choose-real-estate-agent-shutterstock_642415924-81bbd4.jpg" alt="" />
+                    <img className='contact-img' src={card.avatar} alt="" />
             </div>
             <div className="text-start p-4 align-content-center info-contact">
                 <div className="">
