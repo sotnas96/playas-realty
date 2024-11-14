@@ -3,7 +3,7 @@
     background-repeat: no-repeat;
     background-size: 100% 100%;
     color: white;
-    background-image: url("../../assets/images/banner.JPG");
+    background-image: url("/images/banner.JPG");
     width: 100%;
     min-height: 100vh;
     align-content: center;

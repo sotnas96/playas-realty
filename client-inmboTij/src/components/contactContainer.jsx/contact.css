@@ -8,7 +8,7 @@
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    object-fit: cover;
+    object-fit: fill;
   }
   .contact-card{
     display: flex;
@@ -24,5 +24,7 @@
     }
     .contact-img-container {
         max-width: 200px;
+        align-self: center;
+        scale: 1.2;
       }
   }
