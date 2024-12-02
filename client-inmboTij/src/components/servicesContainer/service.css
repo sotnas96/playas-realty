@@ -12,6 +12,12 @@
     max-height: 270px;
     object-fit: cover;
 }
+.carousel-indicators {
+    bottom: -10%;
+}
+.services-carousel {
+    display: none;
+}
 @media (max-width: 767px){
     .logo-service-md {
         width: 100%;
@@ -21,5 +27,13 @@
         min-height: 200px;
         min-width: 250px;
         width: 80%;
+    }
+}
+@media (max-width: 867px) {
+    .services-carousel {
+        display: block;
+    }
+    .services-diplay {
+        display: none;
     }
 }
